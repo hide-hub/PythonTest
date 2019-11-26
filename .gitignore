@@ -1,2 +1,9 @@
-./trashbox/*
+/trashbox/
+/datasets/
+/fer2013/
+/example_submission.csv
+
+
+
+
 
