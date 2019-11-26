@@ -1,6 +1,6 @@
 # Try to identify the logistic regression by two ways
-# one is minimization of the cross entropy itteratively (LDA)
-# the other is using within variance-covariance matrices
+# one is minimization of the cross entropy itteratively
+# the other is using within variance-covariance matrices (LDA)
 # following codes are based on the Udemy class
 # "Deep Learning Prerequisite: logistic regression" provided by LazyProgrammer.com
 
