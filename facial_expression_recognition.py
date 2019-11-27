@@ -12,6 +12,8 @@ from numpy      import matlib as mlib
 ##################################################
 # definition of function
 ###################################################
+
+##### read dataset function #####
 def read_dataset( csv_file_name ):
     '''This function is specified to kaggle competition, Facial Expression Recognition.
     input is csv file name which contains facial expression data in particular format
@@ -32,7 +34,7 @@ def read_dataset( csv_file_name ):
     for row in l:
         # separate the expression result (7 categories)
         Y.append( int(row[0]) )
-        # extract image data
+        # eDataMatrixract image data
         X.append([int(val) for val in row[1].split()])
         # tag for training or test
         if   row[2] == 'Training':
@@ -49,6 +51,52 @@ def read_dataset( csv_file_name ):
 
     return X, Y, Usage
 
+
+##### LDA function #####
+def LDA( DataMatrix, Label ):
+    '''LDA is Linear Discriminant Analysis
+    LDA makes several axes for re-measuring features
+    input:
+        DataMatrix : data matrix containing training data
+                     the shape of this matrix should be N x M which
+                     N is number of samples, and M is dimension of feature space
+        Label : the category label for input DataMatrix
+                each values are corresponding to each row of DataMatrix
+                the label should be integer
+    output:
+        output is list of pairs, eigen values and eigen vectors in LDA
+        the pairs are sorted so that the first eigen vector can be reached to index 0
+    '''
+
+    # make within class scatter matrix
+    wcsMatrix = np.zeros( (DataMatrix.shape[1], DataMatrix.shape[1]) )
+    for cat in range( np.max( Label ) + 1 ):
+        tmpX  = DataMatrix[ Label == cat ]
+        meanX = np.mean( tmpX, 0 )
+
+        tmpX = tmpX - mlib.repmat( meanX, tmpX.shape[0], 1 )
+        wcsMatrix += tmpX.T.dot( tmpX )
+
+    # make between class scatter matrix
+    bcsMatrix = np.zeros( (DataMatrix.shape[1], DataMatrix.shape[1]) )
+    wholeMean = np.mean( DataMatrix, 0 )
+    for cat in range( np.max( Label ) + 1 ):
+        tmpX  = DataMatrix[ Label == cat ]
+        meanX = np.mean( tmpX, 0 )
+
+        tmpX  = ( wholeMean - meanX ).reshape( len(meanX), 1 )
+        bcsMatrix += tmpX.dot( tmpX.T ) * np.sum( DataMatrix==cat )
+
+
+    # calculate eigen values and vectors
+    eval, evec = np.linalg.eig( np.linalg.inv( wcsMatrix ).dot( bcsMatrix ) )
+
+    # sort eigen values with corresponding eigen vectors
+    pairs = [ ( np.abs(eval[i]), evec[:,i] ) for i in range( len(eval) ) ]
+    pairs = sorted( pairs, key=lambda x: x[0], reverse=True )
+    return pairs
+
+
 ##################################################
 # program body
 ##################################################
@@ -58,38 +106,16 @@ X, Y, Usage = read_dataset( 'fer2013/fer2013.csv' )
 # normalize the value range X (0-255) to 0-1
 X = X / 255
 
-# try Linear Discriminant Analysis for reducing big data dimensions
 Xt = X[Usage==0,:]
 Yt = Y[Usage==0]
 
-
-# make within class scatter matrix
-wcsMatrix = np.zeros( (Xt.shape[1], Xt.shape[1]) )
-for cat in range( np.max( Yt ) + 1 ):
-    tmpX  = Xt[ Yt == cat ]
-    meanX = np.mean( tmpX, 0 )
-
-    tmpX = tmpX - mlib.repmat( meanX, tmpX.shape[0], 1 )
-    wcsMatrix += tmpX.T.dot( tmpX )
-
-# make between class scatter matrix
-bcsMatrix = np.zeros( (Xt.shape[1], Xt.shape[1]) )
-wholeMean = np.mean( Xt, 0 )
-for cat in range( np.max( Yt ) + 1 ):
-    tmpX  = Xt[ Yt == cat ]
-    meanX = np.mean( tmpX, 0 )
-
-    tmpX  = ( wholeMean - meanX ).reshape( len(meanX), 1 )
-    bcsMatrix += tmpX.dot( tmpX.T ) * np.sum( Xt==cat )
-
-
-# calculate eigen values and vectors
-eval, evec = np.linalg.eig( np.linalg.inv( wcsMatrix ).dot( bcsMatrix ) )
-
-# sort eigen values with corresponding eigen vectors
-pairs = [ ( np.abs(eval[i]), evec[:,i] ) for i in range( len(eval) ) ]
-pairs = sorted( pairs, key=lambda x: x[0], reverse=True )
-
+# try Linear Discriminant Analysis for reducing big data dimensions
+pairs = LDA( Xt, Yt )
+eval = np.zeros( (Xt.shape[1], 1) )
+evec = np.zeros( (Xt.shape[1], Xt.shape[1]) )
+for i in range( len(pairs) ):
+    eval[i]   = pairs[i][0]
+    evec[:,i] = pairs[i][1]
 
 ax1 = evec[:,0].T.dot( Xt.T ).real
 ax2 = evec[:,1].T.dot( Xt.T ).real
