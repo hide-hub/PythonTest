@@ -1,6 +1,5 @@
-# facial expression recognition test
-# facial data is provided by kaggle challenge project
-# the code for recognition is for udemy lazyprogrammer's project
+# python functions for the project, Facial Expression Recognition.
+# following functions are aimed to use that project (especially read_dataset).
 
 import csv
 import numpy  as np
@@ -76,9 +75,6 @@ def LDA( DataMatrix, Label ):
 
         tmpX = tmpX - mlib.repmat( meanX, tmpX.shape[0], 1 )
         wcsMatrix += tmpX.T.dot( tmpX )
-    
-    print("within class scatter matrix = ")
-    print( wcsMatrix )
 
     # make between class scatter matrix
     bcsMatrix = np.zeros( (DataMatrix.shape[1], DataMatrix.shape[1]) )
@@ -89,9 +85,6 @@ def LDA( DataMatrix, Label ):
 
         tmpX  = ( wholeMean - meanX ).reshape( len(meanX), 1 )
         bcsMatrix += tmpX.dot( tmpX.T ) * np.sum( Label==cat )
-    
-    print( "between class scatter matrix = " )
-    print( bcsMatrix )
 
     # calculate eigen values and vectors
     eval, evec = np.linalg.eig( np.linalg.inv( wcsMatrix ).dot( bcsMatrix ) )
@@ -100,46 +93,5 @@ def LDA( DataMatrix, Label ):
     pairs = [ ( np.abs(eval[i]), evec[:,i] ) for i in range( len(eval) ) ]
     pairs = sorted( pairs, key=lambda x: x[0], reverse=True )
     return pairs
-
-
-##################################################
-# program body
-##################################################
-
-X, Y, Usage = read_dataset( 'fer2013/fer2013.csv' )
-
-# normalize the value range X (0-255) to 0-1
-X = X / 255
-
-Xt = X[Usage==0,:]
-Yt = Y[Usage==0]
-
-# try Linear Discriminant Analysis for reducing big data dimensions
-pairs = LDA( Xt, Yt )
-eval = np.zeros( (Xt.shape[1], 1) )
-evec = np.zeros( (Xt.shape[1], Xt.shape[1]) )
-for i in range( len(pairs) ):
-    eval[i]   = pairs[i][0]
-    evec[:,i] = pairs[i][1]
-
-ax1 = evec[:,0].T.dot( Xt.T ).real
-ax2 = evec[:,1].T.dot( Xt.T ).real
-ax3 = evec[:,2].T.dot( Xt.T ).real
-
-# plt.scatter( ax1, ax2, c=Yt, cmap='rainbow', alpha=0.7, edgecolors='b' )
-# plt.show()
-# ↑全然だめだった。データがバラけることもない
-# いくら何でも軸 2 つは無理があったか
-
-# ということで 3 本目の軸をダメ元でやってみる
-from mpl_toolkits import mplot3d as Axis3D
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.scatter3D( ax1[:200], ax2[:200], ax3[:200], \
-            c=Yt[:200], cmap='rainbow', alpha=0.3, edgecolors='b' )
-plt.show()
-# ↑全く分離できていない。結論として LDA は基本的に 2 クラス分類の手法だと考えている。
-# tmpY = Yt!=0 を実行して 2 クラス分類としてやってみたが 3 次元程度では分けるのが難しいのか、
-# 目立った効果は感じられなかった
 
 
