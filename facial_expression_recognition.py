@@ -76,6 +76,9 @@ def LDA( DataMatrix, Label ):
 
         tmpX = tmpX - mlib.repmat( meanX, tmpX.shape[0], 1 )
         wcsMatrix += tmpX.T.dot( tmpX )
+    
+    print("within class scatter matrix = ")
+    print( wcsMatrix )
 
     # make between class scatter matrix
     bcsMatrix = np.zeros( (DataMatrix.shape[1], DataMatrix.shape[1]) )
@@ -85,8 +88,10 @@ def LDA( DataMatrix, Label ):
         meanX = np.mean( tmpX, 0 )
 
         tmpX  = ( wholeMean - meanX ).reshape( len(meanX), 1 )
-        bcsMatrix += tmpX.dot( tmpX.T ) * np.sum( DataMatrix==cat )
-
+        bcsMatrix += tmpX.dot( tmpX.T ) * np.sum( Label==cat )
+    
+    print( "between class scatter matrix = " )
+    print( bcsMatrix )
 
     # calculate eigen values and vectors
     eval, evec = np.linalg.eig( np.linalg.inv( wcsMatrix ).dot( bcsMatrix ) )
@@ -130,10 +135,11 @@ ax3 = evec[:,2].T.dot( Xt.T ).real
 from mpl_toolkits import mplot3d as Axis3D
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
-ax.scatter3D( ax1[:100]*100, ax2[:100]*100, ax3[:100]*100, \
-            c=Yt[:100], cmap='rainbow', alpha=0.7, edgecolors='b' )
+ax.scatter3D( ax1[:200], ax2[:200], ax3[:200], \
+            c=Yt[:200], cmap='rainbow', alpha=0.3, edgecolors='b' )
 plt.show()
-# 表示点数を 10 まで少なくしても表示されなかった (どこかに間違いがあるのか？)
-
+# ↑全く分離できていない。結論として LDA は基本的に 2 クラス分類の手法だと考えている。
+# tmpY = Yt!=0 を実行して 2 クラス分類としてやってみたが 3 次元程度では分けるのが難しいのか、
+# 目立った効果は感じられなかった
 
 
