@@ -71,17 +71,23 @@ for cat in range( catNum ):
 tmpY = np.concatenate( (Yt[Yt==4],   Yt[Yt==5]) )
 tmpX = np.concatenate( (Xt[Yt==4,:], Xt[Yt==5,:]), axis=0 )
 
-# add dimension for bias term
-tmpX = np.concatenate( (tmpX, np.ones( (tmpX.shape[0],1) )), axis=1 )
+# set label (tmpY) to 0 or 1 because this is 2 categories classification
+tmpY[tmpY==4] = 0
+tmpY[tmpY==5] = 1
+
+## change code not to use bias term (calculate bias separately)
+# # add dimension for bias term
+# tmpX = np.concatenate( (tmpX, np.ones( (tmpX.shape[0],1) )), axis=1 )
 
 # random weight
 w = np.random.randn( tmpX.shape[1] ) / np.sqrt( tmpX.shape[1] )
+b = 0
 
 # initial prediction
-Yp = sigmoid( tmpX.dot( w ) )
+Yp = sigmoid( tmpX.dot( w ) + b )
 
 costhist = []
-learning_rate     = 0.01
+learning_rate     = 1*(10**-6)
 l1_regularization = 0.1
 l2_regularization = 1
 for i in range( 5000 ):
@@ -91,29 +97,19 @@ for i in range( 5000 ):
     w -= learning_rate * ( tmpX.T.dot( Yp - tmpY ) \
          - l1_regularization*np.sign( w ) \
          - l2_regularization*( w ) )
-    pY = sigmoid( tmpX.dot( w ) )
+    b -= learning_rate * np.sum( Yp - tmpY )
+    Yp = sigmoid( tmpX.dot( w ) + b )
     costhist.append( cross_entropy( tmpY, Yp ) )
+
+plt.plot(costhist)
+plt.show()
+
+result = tmpX.dot(w) + b
+plt.scatter( range( len(result) ), result, c=tmpY, cmap='rainbow', alpha=0.2, edgecolor='k' )
+plt.show()
+
+plt.scatter( range( len(result) ), sigmoid(result), c=tmpY, cmap='rainbow', alpha=0.2, edgecolors='k' )
+plt.show()
 
 
 ## end of tmp try
-
-# initial w values are random
-w = np.random.randn( Xt.shape[1], 1 )
-w = w / np.linalg.norm( w )
-
-# initial estimation of Y from random weight
-pY = sigmoid( Xt.dot( w ) )
-
-# make target label aligned with column vector
-tmpY = tmpY.reshape( len(tmpY), 1 )
-
-learning_rate     = 0.01
-l1_regularization = 0.1
-l2_regularization = 1
-for i in range(5000):
-    if i % 100 == 0:
-        print( cross_entropy( tmpY, pY ) )
-    w -= learning_rate * ( Xt.T.dot( pY - tmpY )\
-         - l1_regularization * np.sign(w)\
-         - l2_regularization * w )
-    pY = sigmoid( Xt.dot( w ) )
