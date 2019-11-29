@@ -18,7 +18,7 @@ def read_dataset( csv_file_name ):
     input is csv file name which contains facial expression data in particular format
     outputs are 3 arrays
     1st is image data
-    2nd is expression (0:anger, 1:Happy)
+    2nd is expression (0:angry, 1:disgust, 2:fear, 3:happy, 4:sad, 5:surprise, 6:neutural)
     3rd is usage data (0:for training, 1:for public test, 2:for privat test)
     '''
     with open( csv_file_name ) as f:
@@ -70,7 +70,7 @@ def LDA( DataMatrix, Label ):
     # make within class scatter matrix
     wcsMatrix = np.zeros( (DataMatrix.shape[1], DataMatrix.shape[1]) )
     for cat in range( np.max( Label ) + 1 ):
-        tmpX  = DataMatrix[ Label == cat ]
+        tmpX  = DataMatrix[ Label == cat, : ]
         meanX = np.mean( tmpX, 0 )
 
         tmpX = tmpX - mlib.repmat( meanX, tmpX.shape[0], 1 )
@@ -80,7 +80,7 @@ def LDA( DataMatrix, Label ):
     bcsMatrix = np.zeros( (DataMatrix.shape[1], DataMatrix.shape[1]) )
     wholeMean = np.mean( DataMatrix, 0 )
     for cat in range( np.max( Label ) + 1 ):
-        tmpX  = DataMatrix[ Label == cat ]
+        tmpX  = DataMatrix[ Label == cat, : ]
         meanX = np.mean( tmpX, 0 )
 
         tmpX  = ( wholeMean - meanX ).reshape( len(meanX), 1 )
@@ -93,5 +93,19 @@ def LDA( DataMatrix, Label ):
     pairs = [ ( np.abs(eval[i]), evec[:,i] ) for i in range( len(eval) ) ]
     pairs = sorted( pairs, key=lambda x: x[0], reverse=True )
     return pairs
+
+##### sigmoid function #####
+def sigmoid( z ):
+    return 1 / ( 1 + np.exp( -z ) )
+
+##### cross entropy #####
+def cross_entropy( T, pY ):
+    E = 0
+    for i in range( len( T ) ):
+        if T[i] == 1:
+            E -= np.log( pY[i] )
+        else:
+            E -= np.log( 1 - pY[i] )
+    return E
 
 
