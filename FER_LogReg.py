@@ -86,6 +86,24 @@ b = 0
 # initial prediction
 Yp = sigmoid( tmpX.dot( w ) + b )
 
+## using numpy version
+# costhist = []
+# learning_rate     = 1*(10**-6)
+# l1_regularization = 0.1
+# l2_regularization = 1
+# for i in range( 5000 ):
+#     if i % 100 == 0:
+#         print( cross_entropy( tmpY, Yp ) )
+#     costhist.append( cross_entropy( tmpY, Yp ) )
+#     w -= learning_rate * ( tmpX.T.dot( Yp - tmpY ) \
+#          - l1_regularization*np.sign( w ) \
+#          - l2_regularization*( w ) )
+#     b -= learning_rate * np.sum( Yp - tmpY )
+#     Yp = sigmoid( tmpX.dot( w ) + b )
+#     costhist.append( cross_entropy( tmpY, Yp ) )
+
+## change to use cupy for calculation speed up
+## but it looks not improved so much (or absolutely same with numpy?)
 costhist = []
 learning_rate     = 1*(10**-6)
 l1_regularization = 0.1
@@ -94,12 +112,13 @@ for i in range( 5000 ):
     if i % 100 == 0:
         print( cross_entropy( tmpY, Yp ) )
     costhist.append( cross_entropy( tmpY, Yp ) )
-    w -= learning_rate * ( tmpX.T.dot( Yp - tmpY ) \
+    w -= learning_rate * ( cp.dot( tmpX.T, ( Yp - tmpY ) ) \
          - l1_regularization*np.sign( w ) \
          - l2_regularization*( w ) )
-    b -= learning_rate * np.sum( Yp - tmpY )
+    b -= learning_rate * cp.sum( Yp - tmpY )
     Yp = sigmoid( tmpX.dot( w ) + b )
     costhist.append( cross_entropy( tmpY, Yp ) )
+
 
 plt.plot(costhist)
 plt.show()
@@ -113,3 +132,5 @@ plt.show()
 
 
 ## end of tmp try
+
+
