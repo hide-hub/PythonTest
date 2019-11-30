@@ -4,6 +4,7 @@
 import csv
 import numpy  as np
 import pandas as pd
+import cupy   as cp
 from matplotlib import pyplot as plt
 from numpy      import matlib as mlib
 
@@ -96,16 +97,18 @@ def LDA( DataMatrix, Label ):
 
 ##### sigmoid function #####
 def sigmoid( z ):
-    return 1 / ( 1 + np.exp( -z ) )
+    xp = cp.get_array_module( z )
+    return 1 / ( 1 + xp.exp( -z ) )
 
 ##### cross entropy #####
 def cross_entropy( T, pY ):
+    xp = cp.get_array_module( T )
     E = 0
     for i in range( len( T ) ):
         if T[i] == 1:
-            E -= np.log( pY[i] )
+            E -= xp.log( pY[i] )
         else:
-            E -= np.log( 1 - pY[i] )
+            E -= xp.log( 1 - pY[i] )
     return E
 
 

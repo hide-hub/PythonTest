@@ -9,11 +9,13 @@ p# facial expression recognition test
 import csv
 import numpy  as np
 import pandas as pd
+import cupy   as cp
 from matplotlib import pyplot as plt
 from numpy      import matlib as mlib
 from utils_fer  import read_dataset
 from utils_fer  import sigmoid
 from utils_fer  import cross_entropy
+from tictoc     import tic, toc
 
 ##################################################
 # program body
@@ -86,42 +88,60 @@ b = 0
 # initial prediction
 Yp = sigmoid( tmpX.dot( w ) + b )
 
-## using numpy version
-# costhist = []
-# learning_rate     = 1*(10**-6)
-# l1_regularization = 0.1
-# l2_regularization = 1
-# for i in range( 5000 ):
-#     if i % 100 == 0:
-#         print( cross_entropy( tmpY, Yp ) )
-#     costhist.append( cross_entropy( tmpY, Yp ) )
-#     w -= learning_rate * ( tmpX.T.dot( Yp - tmpY ) \
-#          - l1_regularization*np.sign( w ) \
-#          - l2_regularization*( w ) )
-#     b -= learning_rate * np.sum( Yp - tmpY )
-#     Yp = sigmoid( tmpX.dot( w ) + b )
-#     costhist.append( cross_entropy( tmpY, Yp ) )
 
-## change to use cupy for calculation speed up
-## but it looks not improved so much (or absolutely same with numpy?)
+## change to use cupy for calculation speed up (for comparison)
+tmpXc = cp.asarray( tmpX )
+tmpYc = cp.asarray( tmpY )
+wc    = cp.asarray( w )
+bc    = cp.asarray( b )
+Ypc   = cp.asarray( Yp )
+
+
+# using numpy version
 costhist = []
 learning_rate     = 1*(10**-6)
 l1_regularization = 0.1
 l2_regularization = 1
+
+tic()
 for i in range( 5000 ):
+    cost = cross_entropy( tmpY, Yp )
     if i % 100 == 0:
-        print( cross_entropy( tmpY, Yp ) )
-    costhist.append( cross_entropy( tmpY, Yp ) )
-    w -= learning_rate * ( cp.dot( tmpX.T, ( Yp - tmpY ) ) \
+        print( cost )
+    costhist.append( cost )
+    w -= learning_rate * ( tmpX.T.dot( Yp - tmpY ) \
          - l1_regularization*np.sign( w ) \
          - l2_regularization*( w ) )
-    b -= learning_rate * cp.sum( Yp - tmpY )
+    b -= learning_rate * np.sum( Yp - tmpY )
     Yp = sigmoid( tmpX.dot( w ) + b )
-    costhist.append( cross_entropy( tmpY, Yp ) )
+
+cputime = toc()
 
 
-plt.plot(costhist)
-plt.show()
+tic()
+for i in range( 5000 ):
+    if i % 100 == 0:
+        print('processing...')
+    ## don't copy the value from gpu to cpu so much
+    ## if folllowing comments are enabled, the process takes very long time
+    # costc = cross_entropy( tmpYc, Ypc )
+    # cost  = cp.asnumpy( costc )
+    # if i % 100 == 0:
+    #     print( cost )
+    # costhist.append( cost )
+    wc -= learning_rate * ( cp.dot( tmpXc.T, ( Ypc - tmpYc ) ) \
+         - l1_regularization*np.sign( wc ) \
+         - l2_regularization*( wc ) )
+    bc  = bc - learning_rate * cp.sum( Ypc - tmpYc )
+    Ypc = sigmoid( cp.dot( tmpXc, wc ) + bc )
+
+gputime = toc()
+
+print( 'cpu time is {} [sec]'.format( cputime ) )
+print( 'gpu time is {} [sec]'.format( gputime ) )
+
+# plt.plot(costhist)
+# plt.show()
 
 result = tmpX.dot(w) + b
 plt.scatter( range( len(result) ), result, c=tmpY, cmap='rainbow', alpha=0.2, edgecolor='k' )
