@@ -4,6 +4,10 @@
 # there are several coins which have different probability to show head or tail
 # the player explores or exploits those coins and pushes the game to an advantage
 
+# add UCB1 (Upper Confidence Bound version.1) based on the following site
+# https://docs.microsoft.com/ja-jp/archive/msdn-magazine/2019/august/test-run-the-ucb1-algorithm-for-multi-armed-bandit-problems
+# this is just for comparison to the Epsilon-Greedy proram
+
 import random
 import numpy as np
 
@@ -75,6 +79,48 @@ class EpsilonGreedyAgent():
 
         return rewards
 
+# UCB1 class
+class UCB1Agent():
+    def __init__( self, env ):
+        self.V = len( env )
+        self.N = len( env )
+
+    def policy( self, trial ):
+        if trial <= len( self.N ):
+            idx = np.argmin( self.N )
+            return idx
+
+        # calucurate dicision values for all arms or coins
+        decValue = [0] * len( self.N )
+        # the first (num of arms) trials are counted as initial setup
+        # which means the first (num of arms) trials are not counted in
+        # following calucration
+        t = trial - len( self.N )
+        for i in range( len( self.N ) ):
+            decValue[i] = self.V[i] + np.sqrt( 2 * np.log( t ) / self.N[i] )
+
+        return np.argmax( decValue )
+
+    def play( self, env ):
+        self.N = [0] * len( env )
+        self.V = [0] * len( env )
+
+        env.reset()
+        done = False
+        rewards = []
+        while not done:
+            selected_coin = self.policy( env.toss_count + 1 )
+            reward, done = env.step( selected_coin )
+            rewards.append( reward )
+
+            n = self.N[ selected_coin ]
+            coin_average = self.V[ selected_coin ]
+            new_average  = ( coin_average * n + reward ) / ( n + 1 )
+            self.N[ selected_coin ] += 1
+            self.V[ selected_coin ]  = new_average
+        
+        return rewards
+
 
 if __name__ == "__main__":
     import pandas as pd
@@ -93,6 +139,17 @@ if __name__ == "__main__":
                 rewards = agent.play(env)
                 means.append(np.mean(rewards))
             result["epsilon={}".format(e)] = means
+        
+        # UCB1 algorithm
+        agent = UCB1Agent( env )
+        means = []
+        for s in game_steps:
+            env.max_episode_steps = s
+            rewards = agent.play( env )
+            means.append( np.mean( rewards ) )
+        #result["epsilon={}".format(-1)] = means
+        result["UCB1"] = means
+
         result["coin toss count"] = game_steps
         result = pd.DataFrame(result)
         result.set_index("coin toss count", drop=True, inplace=True)
