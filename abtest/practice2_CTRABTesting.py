@@ -45,4 +45,23 @@ def run_experiment(p1, p2, N):
 # I checked the sample size 50,000 is goot for them (experimentaly)
 run_experiment( 0.1, 0.11, 20000 )
 
+# rule of thumb for sample size is
+# 16 * sigma^2 / delta^2
+# where sigma^2 is variance for sample data, and delta is difference you want to detect
 
+# in this case
+N = 500
+data_sample = np.zeros( (2,N) )
+data = DataGenerator( 0.1, 0.11 ) # the difference is 0.01 
+for i in range( N ):
+    for j in range( 500 ):
+        c1, c2 = data.next()
+        data_sample[0,i] += c1
+        data_sample[1,i] += c2
+
+ssize = 16 * np.var( data_sample[0] ) / ( 0.01**2 )
+print( "sample size for this case is ", ssize )
+
+# the answer is over 7 million
+# I'm not sure if this sample size is required
+# (anway, this is just rule of thumb)
