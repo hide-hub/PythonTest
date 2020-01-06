@@ -8,9 +8,11 @@
 # https://docs.microsoft.com/ja-jp/archive/msdn-magazine/2019/august/test-run-the-ucb1-algorithm-for-multi-armed-bandit-problems
 # this is just for comparison to the Epsilon-Greedy proram
 
+# add beta distribution method for comparison
+# the code is almost copied from Udemy course, Bayesian A/B Testing
+
 import random
 import numpy as np
-
 
 class CoinToss():
 
@@ -121,6 +123,36 @@ class UCB1Agent():
         
         return rewards
 
+# beta distribution method
+class BetaAgent():
+    def __init__( self, env ):
+        # first row is a (num of head) and second is b (nom of tail)
+        self.ab = np.ones( ( len(env), 2 ) )
+    
+    def policy( self ):
+        bestb = None
+        maxsample = -1
+        for i in range( self.ab.shape[0] ):
+            sample = np.random.beta( self.ab[i][0], self.ab[i][1] )
+            if sample > maxsample:
+                maxsample = sample
+                bestb     = i
+        return bestb
+    
+    def play( self, env ):
+        env.reset()
+        done = False
+        rewards = []
+        while not done:
+            selected_coin = self.policy()
+            reward, done = env.step( selected_coin )
+            rewards.append( reward )
+
+            self.ab[selected_coin][0] += reward
+            self.ab[selected_coin][1] += 1 - reward
+        
+        return rewards
+
 
 if __name__ == "__main__":
     import pandas as pd
@@ -149,6 +181,15 @@ if __name__ == "__main__":
             means.append( np.mean( rewards ) )
         #result["epsilon={}".format(-1)] = means
         result["UCB1"] = means
+
+        # beta distribution method
+        agent = BetaAgent( env)
+        means = []
+        for s in game_steps:
+            env.max_episode_steps = s
+            rewards = agent.play( env )
+            means.append( np.mean( rewards ) )
+        result["beta dist"] = means
 
         result["coin toss count"] = game_steps
         result = pd.DataFrame(result)
