@@ -10,6 +10,8 @@
 
 # add beta distribution method for comparison
 # the code is almost copied from Udemy course, Bayesian A/B Testing
+# this is bayesian a/b testing method cause beta distribution is
+# conjugate prior for Bernoui trial
 
 import random
 import numpy as np
@@ -124,7 +126,7 @@ class UCB1Agent():
         return rewards
 
 # beta distribution method
-class BetaAgent():
+class BayesAgent():
     def __init__( self, env ):
         # first row is a (num of head) and second is b (nom of tail)
         self.ab = np.ones( ( len(env), 2 ) )
@@ -183,7 +185,7 @@ if __name__ == "__main__":
         result["UCB1"] = means
 
         # beta distribution method
-        agent = BetaAgent( env)
+        agent = BayesAgent( env)
         means = []
         for s in game_steps:
             env.max_episode_steps = s
