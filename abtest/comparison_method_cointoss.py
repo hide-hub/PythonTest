@@ -152,8 +152,24 @@ class BayesAgent():
 
             self.ab[selected_coin][0] += reward
             self.ab[selected_coin][1] += 1 - reward
-        
+
         return rewards
+
+# this class choose the best bandit continuously for comparison with respect to regret
+class BestAgent():
+    def __init__(self, env):
+        self.bestb = np.argmax( env.head_probs )
+        self.env = env
+
+    def play(self):
+        self.env.reset()
+        done = False
+        rewards = []
+        while not done:
+            reward, done = self.env.step( self.bestb )
+            rewards.append( reward )
+        return rewards
+
 
 
 if __name__ == "__main__":
@@ -185,14 +201,23 @@ if __name__ == "__main__":
         #result["epsilon={}".format(-1)] = means
         result["UCB1"] = means
 
-        # beta distribution method
-        agent = BayesAgent( env)
+        # beta distribution method (bayesian method)
+        agent = BayesAgent( env )
         means = []
         for s in game_steps:
             env.max_episode_steps = s
             rewards = agent.play( env )
             means.append( np.mean( rewards ) )
         result["beta dist"] = means
+
+        # maximum benefit if the best bandit was countinuously choosed
+        agent = BestAgent( env )
+        means = []
+        for s in game_steps:
+            env.max_episode_steps = s
+            rewards = agent.play()
+            means.append( np.mean( rewards ) )
+        result['best choise'] = means
 
         result["coin toss count"] = game_steps
         result = pd.DataFrame(result)
