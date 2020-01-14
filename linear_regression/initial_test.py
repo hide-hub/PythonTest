@@ -46,3 +46,26 @@ plt.plot( X, Y_hat )
 plt.show()
 
 
+# test (homogenous coordinate simple linear solution)
+# this result is not good (maybe because there is no normalization process now)
+Y_test1 = evec[0,2]*X + evec[2,2]
+plt.scatter( X, Y )
+plt.plot( X, Y_test1 )
+plt.show()
+
+# calculate R-squared
+# R-squared is, 1 - (residual / n times of variance )
+d1 = Y - Y_hat
+d2 = Y - Y.mean()
+r2 = 1 - d1.dot(d1) / d2.dot(d2)
+print( "R-squared in 1st solution is ", r2 )
+
+d1 = Y - Y_test1
+r2 = 1 - d1.dot(d1) / d2.dot(d2)
+print( "R-squared in 2nd solution is ", r2 )
+
+
+
+
+
+
