@@ -33,3 +33,9 @@ d2 = Y - Y.mean()
 R2 = 1 - np.dot( d1, d1 ) / np.dot( d2, d2 )
 print( 'R-Squared:', R2 )
 
+fig = plt.figure()
+ax  = fig.add_subplot( 111, projection='3d' )
+ax.scatter( X[:,0], X[:,1], Y )
+ax.scatter( X[:,0], X[:,1], Y_hat )
+plt.show()
+
