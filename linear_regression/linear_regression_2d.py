@@ -39,3 +39,35 @@ ax.scatter( X[:,0], X[:,1], Y )
 ax.scatter( X[:,0], X[:,1], Y_hat )
 plt.show()
 
+
+
+# appendix
+# if there is completely random values in X,
+# will the R-Squared value improved?
+X = []
+Y = []
+for line in open( 'data_2d.csv' ):
+    x1, x2, y = line.split(',')
+    X.append( [ float(x1), float(x2), np.random.rand(), 1 ] )
+    Y.append( float(y) )
+
+X = np.array(X)
+Y = np.array(Y)
+
+w2 = np.linalg.solve( np.dot( X.T, X ), np.dot( X.T, Y ) )
+Y_hat2 = X.dot( w2 )
+d1 = Y - Y_hat2
+d2 = Y - Y.mean()
+R22 = 1 - d1.dot(d1) / d2.dot(d2)
+
+# the R-Squared value is slightly improved
+# the reason of this is the random values are just sample of random values
+# normally, random values doesn't have any correlation to other values
+# but sampled random value chould have slight correlation to other values
+# np.linalg.solve() calculates the relation ship between X.T.dot(X) and X.T.dot(Y)
+# acoording to least mean squared method
+# the result, weight w, has some value to explain the Y from input X including random values
+# the result of prediction is slightly improved because of sampled random values
+
+
+
