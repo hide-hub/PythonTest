@@ -1,0 +1,141 @@
+data details for each file
+
+--------------------------------------------------
+Thunder Basin Antelope Study	-- mlr01.xls
+
+The data (X1, X2, X3, X4) are for each year.
+X1 = spring fawn count/100
+X2 = size of adult antelope population/100
+X3 = annual precipitation (inches)
+X4 = winter severity index (1=mild,
+5=severe)
+
+--------------------------------------------------
+Systolic Blood Pressure Data	-- mlr02.xls
+
+The data (X1, X2, X3) are for each patient.
+X1 = systolic blood pressure
+X2 = age in years
+X3 = weight in pounds
+
+--------------------------------------------------
+Test Scores for General Psychology	-- mlr03.xls
+
+The data (X1, X2, X3, X4) are for each student.
+X1 = score on exam #1
+X2 = score on exam #2
+X3 = score on exam #3
+X4 = score on final exam
+
+--------------------------------------------------
+Hollywood Movies	-- mlr04.xls
+
+The data (X1, X2, X3, X4) are for each movie
+X1 = first year box office receipts/millions
+X2 = total production costs/millions
+X3 = total promotional costs/millions
+X4 = total book sales/millions
+
+--------------------------------------------------
+All Greens Franchise	-- mlr05.xls
+
+The data (X1, X2, X3, X4, X5, X6) are for each franchise store.
+X1 = annual net sales/$1000
+X2 = number sq. ft./1000
+X3 = inventory/$1000
+X4 = amount spent on advertizing/$1000
+X5 = size of sales district/1000 families
+X6 = number of competing stores in district
+
+--------------------------------------------------
+Crime		-- mlr06.xls
+
+The data (X1, X2, X3, X4, X5, X6, X7) are for each city.
+X1 = total overall reported crime rate per 1 million residents
+X2 = reported violent crime rate per 100,000 residents
+X3 = annual police funding in $/resident
+X4 = % of people 25 years+ with 4 yrs. of high school
+X5 = % of 16 to 19 year-olds not in highschool and not highschool graduates.
+X6 = % of 18 to 24 year-olds in college
+X7 = % of people 25 years+ with at least 4 years of college
+Reference: Life In America's Small Cities, By G.S. Thomas
+
+
+--------------------------------------------------
+Health		-- mlr07.xls
+
+The data (X1, X2, X3, X4, X5) are by city.
+X1 = death rate per 1000 residents
+X2 = doctor availability per 100,000 residents
+X3 = hospital availability per 100,000 residents
+X4 = annual per capita income in thousands of dollars
+X5 = population density people per square mile
+Reference: Life In America's Small Cities, by G.S. Thomas
+
+--------------------------------------------------
+Baseball	-- mlr08.xls
+
+A random sample of major league baseball players was obtained.
+The following data (X1, X2, X3, X4, X5, X6) are by player.
+X1 = batting average
+X2 = runs scored/times at bat
+X3 = doubles/times at bat
+X4 = triples/times at bat
+X5 = home runs/times at bat
+X6 = strike outs/times at bat
+Reference: The Baseball Encyclopedia 9th edition, Macmillan
+
+--------------------------------------------------
+Basketball	-- mlr09.xls
+
+The following data (X1, X2, X3, X4, X5) are for each player.
+X1 = height in feet
+X2 = weight in pounds
+X3 = percent of successful field goals (out of 100 attempted)
+X4 = percent of successful free throws (out of 100 attempted)
+X5 = average points scored per game
+Reference: The official NBA basketball Encyclopedia, Villard Books
+
+
+--------------------------------------------------
+Denver Neighborhoods	-- mlr10.xls
+
+The data (X1, X2, X3, X4, X5, X6, X7) are for each neighborhood
+X1 = total population (in thousands)
+X2 = % change in population over past several years
+X3 = % of children (under 18) in population
+X4 = % free school lunch participation
+X5 = % change in household income over past several years
+X6 = crime rate (per 1000 population)
+X7 = % change in crime rate over past several years
+Reference: The Piton Foundation, Denver, Colorado
+
+
+--------------------------------------------------
+Using Technology: U.S. Economy Case Study	-- mlr11.xls
+
+U.S.. economic data 1976 to 1987
+X1 = dollars/barrel crude oil
+X2 = % interest on ten yr. U.S. treasury notes
+X3 = foreign investments/billions of dollars
+X4 = Dow Jones industrial average
+X5 = GNP/billions of dollars
+X6 = purchasing power U.S. dollar (1983 base)
+X7 = consumer debt/billions of dollars
+Reference: Statistical Abstract of the United States 103rd and 109th ediiton
+
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
