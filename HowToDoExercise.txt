@@ -1,0 +1,18 @@
+
+For Exercise
+
+ 1. Pick a dataset you want to work on (one in which you'd like to discover and measure a correlation).
+
+ 2. Download the data, and write code to split it into train and test sets.
+
+ 3. See if you can use some of the variables to predict another variable.
+
+ 4. Measure the accuracy of your model on the train and test data.
+
+ 5. Plot each independent variable against the dependent variable, and do a simple 1-D linear regression. Which one gives you the best R-Squared?
+
+ 6. Determine how many variables you actually need to get the best R-Squared on the test set. (Add variables greedily via largest improvement on the training set)
+
+ - Most of this stuff we already covered so the self-starters amog you have probably already tried this.
+
+
