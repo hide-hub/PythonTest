@@ -236,7 +236,7 @@ class LinearRegression():
         for i in range( D ):
             tmpX = np.vstack([ testX[:,i]**2, testX[:,i], np.ones( self.testN ) ]).T
             Yhat = tmpX.dot( w[i,:] )
-            R2_singlepoly[i] = calcR2( testY, Yhat )
+            R2_singlepoly[i] = self.calcR2( testY, Yhat )
         return w, R2_singlepoly
     
     def calcDoublePolyRegression( self ):
@@ -256,31 +256,114 @@ class LinearRegression():
             combi_pattern : combination of X columns for each row of w
                             w[:,i] is calclated from X columns of combi_pattern[i] and bias term
         '''
+        D = self.D
+        trainX = self.trainX
+        trainY = self.trainY
+        testX  = self.testX
+        testY  = self.testY
         if trainX.shape[0] < 6:
             print( 'the number of samples should be more than 6!!' )
             return
         D = trainX.shape[1]
-        w = np.zeros( ( combinations_count( D,2 ), 6 ) )
+        w = np.zeros( ( self.combinations_count( D,2 ), 6 ) )
+        combi_list = list( itertools.combinations( list( range(D) ), 2 ) )
         i = 0
-        for combi in itertools.combinations( list( range(D) ), 2 ):
+        for combi in combi_list:
             tX1 = trainX[:,combi[0]]
             tX2 = trainX[:,combi[1]]
-            tmpX = np.vstack([ tX1**2, tX2**2, tX1*tX2, tX1, tX2, np.ones( trainX.shape[0] ) ]).T
+            tmpX = np.vstack([ tX1**2, tX2**2, tX1*tX2, tX1, tX2, np.ones( self.trainN ) ]).T
             w[i,:] = np.linalg.solve( tmpX.T.dot( tmpX ), tmpX.T.dot( trainY ) )
             i += 1
         if np.isscalar( testX ) == True:
             return w
         else:
-            R2_doubpoly = np.zeros( combinations_count( D,2 ) )
+            R2_doubpoly = np.zeros( self.combinations_count( D,2 ) )
             i = 0
-            for combi in itertools.combinations( list( range(D) ), 2 ):
+            for combi in combi_list:
                 tX1 = testX[:,combi[0]]
                 tX2 = testX[:,combi[1]]
-                tmpX = np.vstack([ tX1**2, tX2**2, tX1*tX2, tX1, tX2, np.ones( testX.shape[0] ) ]).T
+                tmpX = np.vstack([ tX1**2, tX2**2, tX1*tX2, tX1, tX2, np.ones( self.testN ) ]).T
                 Yhat = tmpX.dot( w[i,:] )
-                R2_doubpoly[i] = calcR2( testY, Yhat )
+                R2_doubpoly[i] = self.calcR2( testY, Yhat )
                 i += 1
-            return w, R2_doubpoly
+            return w, R2_doubpoly, np.array(combi_list)
+        
+    def makeSingleData( self, colidx ):
+        '''
+        creates a Data Matrix for single variable regression
+        input
+            colidx : index number for target X column
+        output
+            totalX  : all records X has is returned with bias term
+            traiinX : first self.trainN records of totalX
+            testX   : last self.testN records of totalX
+        '''
+        X = self.origX
+        totalX = np.vstack([ X[:, colidx], np.ones( self.N ) ]).T
+        trainX = totalX[ :self.trainN, : ]
+        testX  = totalX[ self.trainN:, : ]
+        return totalX, trainX, testX
+    
+    def makeDoubleData( self, colidx1, colidx2 ):
+        '''
+        creates a Data Matrix for double variables regression
+        input
+            colidx1 : 1st index number for target X column
+            colidx2 : 2nd index number for target X column
+        output
+            totalX  : all records X has is returned with bias term
+            traiinX : first self.trainN records of totalX
+            testX   : last self.testN records of totalX
+        '''
+        X = self.origX
+        totalX = np.vstack([ X[:,colidx1],
+                             X[:,colidx2],
+                             np.ones( self.N ) ]).T
+        trainX = totalX[ :self.trainN, : ]
+        testX  = totalX[ self.trainN:, : ]
+        return totalX, trainX, testX
+    
+    def makeSinglePolyData( self, colidx ):
+        '''
+        creates a Data Matrix for single variable polynomial regression
+        input
+            colidx : index number for target X column
+        output
+            totalX  : all records X has is returned with bias term (2nd order polynomial)
+            traiinX : first self.trainN records of totalX
+            testX   : last self.testN records of totalX
+        '''
+        X = self.origX
+        totalX = np.vstack([ X[:,colidx]**2,
+                             X[:,colidx],
+                             np.ones( self.N ) ]).T
+        trainX = totalX[ :self.trainN, : ]
+        testX  = totalX[ self.trainN:, : ]
+        return totalX, trainX, testX
+    
+    def makeDoublePolyData( self, colidx1, colidx2 ):
+        '''
+        creates a Data Matrix for double variables polynomial regression
+        input
+            colidx1 : 1st index number for target X column
+            colidx2 : 2nd index number for target X column
+        output
+            totalX  : all records X has is returned with bias term (2nd order polynomial)
+            traiinX : first self.trainN records of totalX
+            testX   : last self.testN records of totalX
+        '''
+        X = self.origX
+        totalX = np.vstack([ X[:,colidx1]**2,
+                             X[:,colidx2]**2,
+                             X[:,colidx1]*X[:,colidx2],
+                             X[:,colidx1],
+                             X[:,colidx2],
+                             np.ones( self.N ) ]).T
+        trainX = totalX[ :self.trainN, : ]
+        testX  = totalX[ self.trainN:, : ]
+        return totalX, trainX, testX
+
+
 
 
 
