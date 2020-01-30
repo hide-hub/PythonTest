@@ -362,7 +362,35 @@ class LinearRegression():
         trainX = totalX[ :self.trainN, : ]
         testX  = totalX[ self.trainN:, : ]
         return totalX, trainX, testX
+    
+    def findBestR2Score( self ):
+        w_single,   R2_single             = self.calcSingleRegression()
+        w_singpoly, R2_singpoly           = self.calcSinglePolyRegression()
+        w_double,   R2_double,   d_combi  = self.calcDoubleRegression()
+        w_doubpoly, R2_doubpoly, dp_combi = self.calcDoublePolyRegression()
 
+        max_single   = ( R2_single.max(),   np.argmax( R2_single ) )
+        max_singpoly = ( R2_singpoly.max(), np.argmax( R2_singpoly ) )
+        max_double   = ( R2_double.max(),   np.argmax( R2_double ) )
+        max_doubpoly = ( R2_doubpoly.max(), np.argmax( R2_doubpoly ) )
+
+        catNo = np.argmax( [max_single[0], max_singpoly[0], max_double[0], max_doubpoly[0]] )
+        if   catNo == 0:    # single variable regression
+            print( 'Single Variable Regression is the best score of R-Squared' )
+            print( 'the idx:{0} column of X is the best explanatory veriable'.format( max_single[1] ) )
+        elif catNo == 1:    # single polynomial regression
+            print( 'Polynomial of Single Variable Regression is the best score of R-Squared' )
+            print( 'the idx:{0} column of X is the best combination for polynomial'.format( max_single[1] ) )
+        elif catNo == 2:    # double variables regression
+            bestpair = d_combi[ max_double[1] ]
+            print( 'Double Variables Regression is the best score of R-Squared' )
+            print( 'the idx:{0} and idx:{1} columns of X are the best combination for explanatory variables'.format( bestpair[0], bestpair[1] ) )
+        elif catNo == 3:    # double polynomial regression
+            bestpair = dp_combi[ max_doubpoly[1] ]
+            print( 'Polynomial of Double Variables Regression is the best score of R-Squared' )
+            print( 'the idx:{0} and idx:{1} columns of X are the best combination for polynomial'.format( bestpair[0], bestpair[1] ) )
+        else:
+            print( 'some error was occured' )
 
 
 
