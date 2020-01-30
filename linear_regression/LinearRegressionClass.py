@@ -364,6 +364,13 @@ class LinearRegression():
         return totalX, trainX, testX
     
     def findBestR2Score( self ):
+        '''
+        try all regression on this class and find the best method (and its construction)
+        output
+            best_w     : the best weight for the regression
+            best_R2    : the best R-Squared score for the regression
+            best_combi : (if it has double variable) the best combination of variables
+        '''
         w_single,   R2_single             = self.calcSingleRegression()
         w_singpoly, R2_singpoly           = self.calcSinglePolyRegression()
         w_double,   R2_double,   d_combi  = self.calcDoubleRegression()
@@ -375,22 +382,37 @@ class LinearRegression():
         max_doubpoly = ( R2_doubpoly.max(), np.argmax( R2_doubpoly ) )
 
         catNo = np.argmax( [max_single[0], max_singpoly[0], max_double[0], max_doubpoly[0]] )
+        best_w     = []
+        best_R2    = []
+        best_combi = []
         if   catNo == 0:    # single variable regression
             print( 'Single Variable Regression is the best score of R-Squared' )
             print( 'the idx:{0} column of X is the best explanatory veriable'.format( max_single[1] ) )
+            best_w     = w_single[ max_single[1], : ]
+            best_R2    = max_single[0]
         elif catNo == 1:    # single polynomial regression
             print( 'Polynomial of Single Variable Regression is the best score of R-Squared' )
             print( 'the idx:{0} column of X is the best combination for polynomial'.format( max_single[1] ) )
+            best_w     = w_singpoly[ max_single[1], : ]
+            best_R2    = max_singpoly[0]
         elif catNo == 2:    # double variables regression
             bestpair = d_combi[ max_double[1] ]
             print( 'Double Variables Regression is the best score of R-Squared' )
             print( 'the idx:{0} and idx:{1} columns of X are the best combination for explanatory variables'.format( bestpair[0], bestpair[1] ) )
+            best_w     = w_double[ max_double[1], : ]
+            best_R2    = max_double[0]
+            best_combi = bestpair
         elif catNo == 3:    # double polynomial regression
             bestpair = dp_combi[ max_doubpoly[1] ]
             print( 'Polynomial of Double Variables Regression is the best score of R-Squared' )
             print( 'the idx:{0} and idx:{1} columns of X are the best combination for polynomial'.format( bestpair[0], bestpair[1] ) )
+            best_w     = w_doubpoly[ max_doubpoly[1], : ]
+            best_R2    = max_doubpoly[0]
+            best_combi = bestpair
         else:
             print( 'some error was occured' )
+        
+        return best_w, best_R2, best_combi
 
 
 
