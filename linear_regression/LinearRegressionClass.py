@@ -13,20 +13,20 @@ from mpl_toolkits.mplot3d import axis3d
 
 class LinearRegression():
     '''
-    this class calculates each types (single variable, double, polynomial) of
-    linear regression for comparing each method for explaining the data
-    linear regression is basically calculates weights w
-    and predicts Y by following equation
-    Y = Xw
+        this class calculates each types (single variable, double, polynomial) of
+        linear regression for comparing each method for explaining the data
+        linear regression is basically calculates weights w
+        and predicts Y by following equation
+        Y = Xw
     '''
 
     def __init__( self, X, Y, namesX=[], nameY=[] ):
         '''
-        initialize this class
-        input:
-            X : explanatory variables (should be 'number of records' x 'Demensionarity' )
-                (caution: don't set bias term (ones(N)) to X)
-            Y : objective varialbes (should be 'number of records' x 1)
+            initialize this class
+            input:
+                X : explanatory variables (should be 'number of records' x 'Demensionarity' )
+                    (caution: don't set bias term (ones(N)) to X)
+                Y : objective varialbes (should be 'number of records' x 1)
         '''
         # check violation of data size
         if X.shape[1] != len( namesX ):
@@ -57,12 +57,12 @@ class LinearRegression():
     # define function
     def calcR2( self, Y, Yhat ):
         '''
-        calculate R-Squared value for input
-        input
-            Y    : answer of Y (objective variable)
-            Yhat : predicted value of Y
-        output
-            R2   : R-Squared value for Yhat
+            calculate R-Squared value for input
+            input
+                Y    : answer of Y (objective variable)
+                Yhat : predicted value of Y
+            output
+                R2   : R-Squared value for Yhat
         '''
         d1 = Y - Yhat
         d2 = Y - Y.mean()
@@ -71,21 +71,21 @@ class LinearRegression():
 
     def combinations_count( self, n, r ):
         '''
-        calculate the combination count of nCr
-        input
-            n : number of candidates
-            r : number of choice
+            calculate the combination count of nCr
+            input
+                n : number of candidates
+                r : number of choice
         '''
         r = min( r, n - r )
         return math.factorial( n ) // ( math.factorial( n-r ) * math.factorial( r ) )
     
     def plotAll3DScatter( self ):
         '''
-        display scatter plots for all cimbinations of 2 of X variables and Y
-        for example, if X has 3 variables, A, B, C,
-        this function shows 3D scatter plot 3 times,
-        (A and B vs Y, A and C vs Y, and B and C vs Y)
-        how many times 3D plot will be shown is nCr (n: num of dimensionarity, r is 2)
+            display scatter plots for all cimbinations of 2 of X variables and Y
+            for example, if X has 3 variables, A, B, C,
+            this function shows 3D scatter plot 3 times,
+            (A and B vs Y, A and C vs Y, and B and C vs Y)
+            how many times 3D plot will be shown is nCr (n: num of dimensionarity, r is 2)
         '''
         if self.combinations_count( self.D, 2 ) > 3:
             nCr = self.combinations_count( self.D, 2 )
@@ -118,10 +118,10 @@ class LinearRegression():
     
     def plotAll2DScatter( self ):
         '''
-        display scatter plots for each column of X and Y
-        for example, if X has 3 variables, A, B, C,
-        this function shows 2D scatter plot 3 times,
-        (A vs Y, B vs Y, and C vs Y)
+            display scatter plots for each column of X and Y
+            for example, if X has 3 variables, A, B, C,
+            this function shows 2D scatter plot 3 times,
+            (A vs Y, B vs Y, and C vs Y)
         '''
         if self.D > 3:
             print( 'the number of plot will be {0}, which means you have to close plot window {0} times'.format( self.D ) )
@@ -143,15 +143,15 @@ class LinearRegression():
     
     def calcSingleRegression( self ):
         '''
-        calculate weight (including bias term) for each column of X to explain the objective value Y
-        cause result including bias term, the size of w will be Dx2
-        the w is calculated for trainX (check self.trainX) for explaining trainY
-        output R2 is calculated for testX and testY
-        output
-            w  : list of weights which is sequence of row vectors
-            R2 : R-Squared values for each w which evaluates each w in list above w
-                 each R2 is how good the No.i row of w explanes testY
-                 max is 1 (the best explanation)
+            calculate weight (including bias term) for each column of X to explain the objective value Y
+            cause result including bias term, the size of w will be Dx2
+            the w is calculated for trainX (check self.trainX) for explaining trainY
+            output R2 is calculated for testX and testY
+            output
+                w  : list of weights which is sequence of row vectors
+                R2 : R-Squared values for each w which evaluates each w in list above w
+                    each R2 is how good the No.i row of w explanes testY
+                    max is 1 (the best explanation)
         '''
         # assume trainX doesn't have bias term
         D = self.D
@@ -173,17 +173,17 @@ class LinearRegression():
     
     def calcDoubleRegression( self ):
         '''
-        calculate weight (including bias term) for each column of X to explain the objective value Y
-        cause result including bias term, the size of w will be Dx3
-        the w is calculated for trainX (check self.trainX) for explaining trainY
-        output R2 is calculated for testX and testY
-        output
-            w  : list of weights which is sequence of row vectors
-            R2 : R-Squared values for each w which evaluates each w in list above w
-                 each R2 is how good the No.i row of w explanes testY
-                 max is 1 (the best explanation)
-            combi_pattern : combination of X columns for each row of w
-                            w[:,i] is calclated from X columns of combi_pattern[i] and bias term
+            calculate weight (including bias term) for each column of X to explain the objective value Y
+            cause result including bias term, the size of w will be Dx3
+            the w is calculated for trainX (check self.trainX) for explaining trainY
+            output R2 is calculated for testX and testY
+            output
+                w  : list of weights which is sequence of row vectors
+                R2 : R-Squared values for each w which evaluates each w in list above w
+                    each R2 is how good the No.i row of w explanes testY
+                    max is 1 (the best explanation)
+                combi_pattern : combination of X columns for each row of w
+                                w[:,i] is calclated from X columns of combi_pattern[i] and bias term
         '''
         D = self.D
         trainX = self.trainX
@@ -209,18 +209,18 @@ class LinearRegression():
     
     def calcSinglePolyRegression( self ):
         '''
-        calculate weight (including bias term) for each column of X to explain the objective value Y
-        the one column vector X will be comverted to [ X**2, X, 1 ] which is 2nd order polynomial
-        because of this conversion, the size of w will be Dx3
-        the w is calculated for trainX (check self.trainX) for explaining trainY
-        output R2 is calculated for testX and testY
-        output
-            w  : list of weights for 2nd order polynomial of X[:,i] which is sequence of row vectors
-            R2 : R-Squared values for each w which evaluates each weights in the list above w
-                 each R2 is how good the No.i row of w explanes testY
-                 max is 1 (the best explanation)
-            combi_pattern : combination of X columns for each row of w
-                            w[:,i] is calclated from X columns of combi_pattern[i] and bias term
+            calculate weight (including bias term) for each column of X to explain the objective value Y
+            the one column vector X will be comverted to [ X**2, X, 1 ] which is 2nd order polynomial
+            because of this conversion, the size of w will be Dx3
+            the w is calculated for trainX (check self.trainX) for explaining trainY
+            output R2 is calculated for testX and testY
+            output
+                w  : list of weights for 2nd order polynomial of X[:,i] which is sequence of row vectors
+                R2 : R-Squared values for each w which evaluates each weights in the list above w
+                    each R2 is how good the No.i row of w explanes testY
+                    max is 1 (the best explanation)
+                combi_pattern : combination of X columns for each row of w
+                                w[:,i] is calclated from X columns of combi_pattern[i] and bias term
         '''
         D = self.D
         trainX = self.trainX
@@ -241,20 +241,20 @@ class LinearRegression():
     
     def calcDoublePolyRegression( self ):
         '''
-        calculate weight (including bias term) for 2 columns in X to explain the objective value Y
-        the two columns vector X1 and X2 will be comverted to
-        [ X1**2, X2**2, X1*X2, X1, X2, 1 ] which is 2nd order polynomial
-        because of this conversion, the size of w will be Dx6
-        so the number of records for training (check self.trainN) have to be equal or larger than 6
-        the w is calculated for trainX (check self.trainX) for explaining trainY
-        output R2 is calculated for testX and testY
-        output
-            w  : list of weights for 2nd order polynomial of X[:,i and j] which is sequence of row vectors
-            R2 : R-Squared values for each w which evaluates each weights in the list above w
-                 each R2 is how good the No.i row of w explanes testY
-                 max is 1 (the best explanation)
-            combi_pattern : combination of X columns for each row of w
-                            w[:,i] is calclated from X columns of combi_pattern[i] and bias term
+            calculate weight (including bias term) for 2 columns in X to explain the objective value Y
+            the two columns vector X1 and X2 will be comverted to
+            [ X1**2, X2**2, X1*X2, X1, X2, 1 ] which is 2nd order polynomial
+            because of this conversion, the size of w will be Dx6
+            so the number of records for training (check self.trainN) have to be equal or larger than 6
+            the w is calculated for trainX (check self.trainX) for explaining trainY
+            output R2 is calculated for testX and testY
+            output
+                w  : list of weights for 2nd order polynomial of X[:,i and j] which is sequence of row vectors
+                R2 : R-Squared values for each w which evaluates each weights in the list above w
+                    each R2 is how good the No.i row of w explanes testY
+                    max is 1 (the best explanation)
+                combi_pattern : combination of X columns for each row of w
+                                w[:,i] is calclated from X columns of combi_pattern[i] and bias term
         '''
         D = self.D
         trainX = self.trainX
@@ -290,13 +290,13 @@ class LinearRegression():
         
     def makeSingleData( self, colidx ):
         '''
-        creates a Data Matrix for single variable regression
-        input
-            colidx : index number for target X column
-        output
-            totalX  : all records X has is returned with bias term
-            traiinX : first self.trainN records of totalX
-            testX   : last self.testN records of totalX
+            creates a Data Matrix for single variable regression
+            input
+                colidx : index number for target X column
+            output
+                totalX  : all records X has is returned with bias term
+                traiinX : first self.trainN records of totalX
+                testX   : last self.testN records of totalX
         '''
         X = self.origX
         totalX = np.vstack([ X[:, colidx], np.ones( self.N ) ]).T
@@ -306,14 +306,14 @@ class LinearRegression():
     
     def makeDoubleData( self, colidx1, colidx2 ):
         '''
-        creates a Data Matrix for double variables regression
-        input
-            colidx1 : 1st index number for target X column
-            colidx2 : 2nd index number for target X column
-        output
-            totalX  : all records X has is returned with bias term
-            traiinX : first self.trainN records of totalX
-            testX   : last self.testN records of totalX
+            creates a Data Matrix for double variables regression
+            input
+                colidx1 : 1st index number for target X column
+                colidx2 : 2nd index number for target X column
+            output
+                totalX  : all records X has is returned with bias term
+                traiinX : first self.trainN records of totalX
+                testX   : last self.testN records of totalX
         '''
         X = self.origX
         totalX = np.vstack([ X[:,colidx1],
@@ -325,13 +325,13 @@ class LinearRegression():
     
     def makeSinglePolyData( self, colidx ):
         '''
-        creates a Data Matrix for single variable polynomial regression
-        input
-            colidx : index number for target X column
-        output
-            totalX  : all records X has is returned with bias term (2nd order polynomial)
-            traiinX : first self.trainN records of totalX
-            testX   : last self.testN records of totalX
+            creates a Data Matrix for single variable polynomial regression
+            input
+                colidx : index number for target X column
+            output
+                totalX  : all records X has is returned with bias term (2nd order polynomial)
+                traiinX : first self.trainN records of totalX
+                testX   : last self.testN records of totalX
         '''
         X = self.origX
         totalX = np.vstack([ X[:,colidx]**2,
@@ -343,14 +343,14 @@ class LinearRegression():
     
     def makeDoublePolyData( self, colidx1, colidx2 ):
         '''
-        creates a Data Matrix for double variables polynomial regression
-        input
-            colidx1 : 1st index number for target X column
-            colidx2 : 2nd index number for target X column
-        output
-            totalX  : all records X has is returned with bias term (2nd order polynomial)
-            traiinX : first self.trainN records of totalX
-            testX   : last self.testN records of totalX
+            creates a Data Matrix for double variables polynomial regression
+            input
+                colidx1 : 1st index number for target X column
+                colidx2 : 2nd index number for target X column
+            output
+                totalX  : all records X has is returned with bias term (2nd order polynomial)
+                traiinX : first self.trainN records of totalX
+                testX   : last self.testN records of totalX
         '''
         X = self.origX
         totalX = np.vstack([ X[:,colidx1]**2,
@@ -365,11 +365,11 @@ class LinearRegression():
     
     def findBestR2Score( self ):
         '''
-        try all regression on this class and find the best method (and its construction)
-        output
-            best_w     : the best weight for the regression
-            best_R2    : the best R-Squared score for the regression
-            best_combi : (if it has double variable) the best combination of variables
+            try all regression on this class and find the best method (and its construction)
+            output
+                best_w     : the best weight for the regression
+                best_R2    : the best R-Squared score for the regression
+                best_combi : (if it has double variable) the best combination of variables
         '''
         w_single,   R2_single             = self.calcSingleRegression()
         w_singpoly, R2_singpoly           = self.calcSinglePolyRegression()
