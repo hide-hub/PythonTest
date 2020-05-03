@@ -72,8 +72,8 @@ for i in range(3): # there are 3 classes in wine data
     T = np.int8( y==class_name )
     z = sigmoid( nXb.dot(w) )
     cost_hist = [ cross_entropy( T, z ) ]
-    for i in range(10000):
-        if i % 100 == 0:
+    for j in range(10000):
+        if j % 100 == 0:
             print( cross_entropy( T, z ) )
         w -= learning_rate * ( nXb.T.dot( z - T ) - l2_regularization*w )
         z  = sigmoid( nXb.dot(w) )

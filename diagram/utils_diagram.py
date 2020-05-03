@@ -62,7 +62,7 @@ def Show_NormalQ_Q( X, Y, b, step=10**5 ):
   sample  = np.array( list( range(-w*mag, w*mag, round(w*2*mag/step)) ) ) / mag
   nDist   = 1/np.sqrt( 2*np.pi ) * np.exp( sample**2/-2 )
   norCum  = np.cumsum( nDist * w*2/step )
-
+  #
   # calcurate Hat matrix
   # Hat marix is a projection matrix from Y to Y_hat
   # Xb = Y means b = inv(X.T * X) * X.T
@@ -73,26 +73,63 @@ def Show_NormalQ_Q( X, Y, b, step=10**5 ):
   tmp = X.values
   Hat = tmp.dot( np.linalg.inv( tmp.T.dot(tmp) ) ).dot( tmp.T )
   h   = np.diag( Hat )  # diagonal values in Hat is important for standardization
-
+  #
   # standardized residual
   # residual standardization std_r is calculated as following
   # std_r = r / ( sqrt( variance ) * sqrt( 1 - h ) )
   # where h is diagonal elements of Hat matrix
   Residuals = Y - X.dot( b )
   stdRed    = Residuals / ( np.sqrt( np.var(Residuals, ddof=1) ) * np.sqrt( 1 - h ) )
-
+  #
   # sorted data and its indices
   N = len( stdRed )  # number of data records
   sortedStdRed = sorted( stdRed )
   idx = np.array( list(range( 0, N+2 )) ) / (N+1)
   idx = idx[1:-1]
-
+  #
   # x and y for Q-Q plot
   diff = mlib.repmat( norCum, len(idx), 1 ) - mlib.repmat( idx, len(norCum), 1 ).T
   x = sample[ np.argmin( diff**2, 1 ) ]
   y = sortedStdRed
-
+  #
   plt.scatter( x, y )
+  plt.grid( b=None, which='major', axis='both' )
+  plt.show()
+
+
+def Show_ScaleLocation( X, Y, b ):
+  # Y_hat (estimation)
+  Y_hat = X.dot( b )
+  # Hat matrix
+  tmp = X.values
+  Hat = tmp.dot( np.linalg.inv( tmp.T.dot(tmp) ) ).dot( tmp.T )
+  h   = np.diag( Hat )
+  #
+  # standardization of residual
+  Residuals = Y - Y_hat
+  stdRed    = Residuals / ( np.sqrt( np.var(Residuals, ddof=1) ) * np.sqrt( 1 - h ) )
+  #
+  # plot is Fitted Value vs sqrt( |Standardized Residucals| )
+  plt.scatter( Y_hat, np.sqrt( np.abs( stdRed ) ) )
+  plt.grid( b=None, which='major', axis='both' )
+  plt.show()
+
+
+def Show_Residuals_vs_Leverage( X, Y, b ):
+  # Y_hat (estimation)
+  Y_hat = X.dot( b )
+  #
+  # Hat matrix
+  tmp = X.values
+  Hat = tmp.dot( np.linalg.inv( tmp.T.dot(tmp) ) ).dot( tmp.T )
+  h   = np.diag( Hat )  # h is called 'Leverage'
+  #
+  # standardization of residual
+  Residuals = Y - Y_hat
+  stdRed    = Residuals / ( np.sqrt( np.var(Residuals, ddof=1) ) * np.sqrt( 1 - h ) )
+  #
+  # plot Residuals vs Leverage
+  plt.scatter( h, stdRed )
   plt.grid( b=None, which='major', axis='both' )
   plt.show()
 
