@@ -1,0 +1,52 @@
+データの入力
+weather<- read.csv("weather.csv")
+weather
+
+
+問題２
+barplot(table(weather$風向き), xlab="風向き", ylab="Frequency")
+
+＜参考：円グラフ＞
+data <- c(15,10,2,2,1,1)
+names(data) <- c("北北西","北西","西北西","東北東","南西","南東")
+pie(data, labels=names(data), main="風向き", clockwise=TRUE)
+
+問題３
+hist(weather$平均気温, breaks = seq(2,8,1),col="darkgray",xlab="平均気温",main="") 
+
+＜参考：幹葉図＞
+stem(weather$平均気温, scale = 1, width = 40, atom = 1e-08)
+
+問題４
+Fn <- ecdf(weather$平均気温)
+plot(Fn, do.point=F, verticals=T,xlab="", ylab="",main=paste(""),)
+
+問題５，問題６
+ x=c(weather$平均気温) 
+ mean(x);var(x);sd(x);quantile(x);IQR(x) 
+
+＜参考：平均湿度，日照時間＞
+ y=c(weather$平均湿度)
+ z=c(weather$日照時間)
+ mean(y);var(y);sd(y);quantile(y);IQR(y) 
+ mean(z);var(z);sd(z);quantile(z);IQR(z) 
+
+
+問題６
+boxplot(weather$平均気温, ylab="平均気温", xlab="",range=0, data=weather)
+
+
+問題７
+plot(weather$平均気温,  type="b", xlab="日", ylab="")
+
+問題８
+plot(weather[,2],weather[,3] , xlab="平均気温", ylab="平均湿度")
+plot(weather[,2],weather[,4] , xlab="平均気温", ylab="日照時間")
+plot(weather[,3],weather[,4] , xlab="平均湿度", ylab="日照時間")
+
+
+ x=c(weather$平均気温)
+ y=c(weather$平均湿度)
+ z=c(weather$日照時間)
+cor(x,y);cor(x,z);cor(y,z)
+

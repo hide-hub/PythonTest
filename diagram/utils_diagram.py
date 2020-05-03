@@ -64,17 +64,20 @@ def Show_NormalQ_Q( X, Y, b, step=10**5 ):
   norCum  = np.cumsum( nDist * w*2/step )
 
   # calcurate Hat matrix
-  # Hat marix is projection matrix from Y to Y_hat
+  # Hat marix is a projection matrix from Y to Y_hat
   # Xb = Y means b = inv(X.T * X) * X.T
-  # so substituting inv(X.T*X)*X.T to b
+  # so substituting inv(X.T*X)*X.T to b, the following equation is proveded
   # X * inv(X.T*X) * X.T * Y = Y_hat (estimation of Y)
   # which is Hat matrix (project Y to Y_hat) is X * inv(X.T*X) * X.T
-  # Hat * Y = Y_hat
+  # (Hat * Y = Y_hat)
   tmp = X.values
   Hat = tmp.dot( np.linalg.inv( tmp.T.dot(tmp) ) ).dot( tmp.T )
   h   = np.diag( Hat )  # diagonal values in Hat is important for standardization
 
   # standardized residual
+  # residual standardization std_r is calculated as following
+  # std_r = r / ( sqrt( variance ) * sqrt( 1 - h ) )
+  # where h is diagonal elements of Hat matrix
   Residuals = Y - X.dot( b )
   stdRed    = Residuals / ( np.sqrt( np.var(Residuals, ddof=1) ) * np.sqrt( 1 - h ) )
 

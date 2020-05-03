@@ -1,0 +1,296 @@
+nrow(room2.data$description)
+room2.data$description
+nrow(room2.data$description)
+dim(room2.data$description)
+dimsize(room2.data$description)
+dims(room2.data$description)
+size(room2.data$description)
+names(room2.data$description)
+length()
+length(room2.data$description)
+add.description<-function(DATA,pos=0)#
+{#
+	if(pos==0)#
+		if(is.null(DATA$description))#
+			pos<-1#
+		else#
+			pos<-length(DATA$description)#
+	cat("記述を入力して下さい．終了は改行後^c\n")#
+	DATA$description[pos]<-scan(stdin())#
+}
+add.description(room2.data)
+add.description<-function(DATA,pos=0)#
+{#
+	if(pos<0)#
+		{#
+			DATA$description<-DATA$description[pos]#
+			print(DATA$description)#
+		}			#
+	if(pos==0)#
+		{#
+			if(is.null(DATA$description))#
+				pos<-1#
+		}#
+	else#
+			pos<-length(DATA$description)#
+	cat("記述を入力して下さい．終了は改行後^c\n")#
+	DATA$description[pos]<-scan(stdin(),what=list(""))#
+}
+add.description(room2.data)
+show.data(room2.data)
+room2.data$description
+room2.data$description[1]<-c("このデータは賃貸マンションに関するデータです．")
+room2.data$description[2]<-c("変数の単位は，徒歩(分) 近さ(A=7分以下，B=8分以上)  家賃(十円) 間取り 大きさ(m2) 方角 築年数(年)です")
+show.data(room2.dar)
+show.data(room2.data)
+room2.data$description<-NULL
+room2.data$description[1]<-c("このデータは賃貸マンションに関するデータです．")
+room2.data$description[2]<-c("変数の単位は，徒歩(分) 近さ(A=7分以下，B=8分以上)  家賃(十円) 間取り 大きさ(m2) 方角 築年数(年)です")
+show.data(room2.data)
+room2.data$description[3]<-readLines()
+ls()
+del(chidf1)
+delete(chidf1)
+rm(chidf1)
+Boday
+Body
+room2
+room2$data<-room2
+room2
+ls()
+JapanSalary
+Salary
+Salary2
+Salary$data<-Salary2
+Salary$data<-as.matrix(Salary2)
+Salary$data
+rm(Salary)
+Salary$data<-as.matrix(Salary2)
+Salary<-new.env()
+Salart$data<-Salary2
+Salary$data<-Salary2
+Sarary$description<-c("月給与データ　2000年1月から2011年3月まで　データの大きさは135")
+Salary$description<-c("月給与データ　2000年1月から2011年3月まで　データの大きさは135")
+Salary$description[2]<-c("変数は年月，日本全体，東京")
+show.data(Salary)
+ts.SalaryIndex<-ts(SalaryIndex,start=c(2000,1),frequency=12)plot.ts(ts.SalaryIndex)
+SalaryIndex
+show.data<-function(DATA,action="all")#
+{#
+	if(action =="all" || action=="description")#
+		if(!is.null(DATA$description))#
+			print(DATA$description)#
+	if(action=="all" || action=="data"|| action=="head"|| action=="tail")#
+		{#
+			cat("データの大きさ",nrow(DATA$data),"\n")#
+			cat("変数の個数",ncol(DATA$data),"\n")#
+		}#
+	if(action=="all" || action=="data" || action=="head")#
+		if(!is.null(DATA$data))#
+			{#
+				print(head(DATA$data))#
+			}#
+	if(action=="all" || action=="data"|| action=="tail")#
+		if(!is.null(DATA$data))#
+			{#
+				print(tail(DATA$data))#
+			}#
+#
+}
+mean2000<-apply(Salary$data[1:12,2:3],mean,1)mean2000SalaryIndex<-ts(Salary$data[,2:3]/mean2000,start=c(2000,1))
+mean2000<-apply(Salary$data[1:12,2:3,1,mean])
+mean2000<-apply(Salary$data[1:12,2:3],1,mean)
+mean2000
+mean2000<-apply(Salary$data[1:12,2:3],2,mean)
+mean2000
+mean2000<-apply(Salary$data[1:12,2:3],2,mean)mean2000SalaryIndex<-ts(Salary$data[,2:3]/mean2000,start=c(2000,1))
+plot(SalaryIndex)
+mean2000<-apply(Salary$data[1:12,2:3],2,mean)mean2000SalaryIndex<-ts(Salary$data[,2:3]/mean2000,start=c(2000,1),frequency=12)
+plot(SalaryIndex)
+plot(SalaryIndex,ylim=c(0.8,1.6))
+SalaryIndex
+ts.SalaryIndex
+SalaryofAll.ts<-ts(Salary$data[,2],start=c(2000,1),frequency=12)plot(decompose(SalaryofAll.ts)
+)
+SalaryofAll.ts<-ts(Salary$data[,2]/10000,start=c(2000,1),frequency=12)plot(decompose(SalaryofAll.ts),xlab="年月")
+SalaryofAll.ts<-ts(Salary$data[,2]/10000,start=c(2000,1),frequency=12)SalaryofTokyo.ts<-ts(Salary$data[,3]/10000,start=c(2000,1),frequency=12)plot(decompose(SalaryofAll.ts),xlab="年月")plot(acf(SalaryofTokyo.ts)
+)
+save.image()
+demo(graphics)
+readline(prompt="図2.1")plot(SalaryIndex.ts)
+readline(prompt="図2.1")
+ls(demo(graphics))
+ans<-readline(prompt="図2.1")plot(SalaryIndex.ts)
+source(demo)
+demo
+readline("\nType  <Return>\t to start : ")plot(SalaryIndex.ts,xlab="図2.1")
+readline("\nType  <Return>\t to start : ")
+plot(SalaryIndex.ts,xlab="図2.1")
+SalaryIndex.ts<-ts(Salary$data[,2:3]/mean2000,start=c(2000,1),frequency=12)#図2.1readline("\nType  <Return>\t to start : ")plot(SalaryIndex.ts,xlab="図2.1")SalaryofAll.ts<-ts(Salary$data[,2]/10000,start=c(2000,1),frequency=12)SalaryofTokyo.ts<-ts(Salary$data[,3]/10000,start=c(2000,1),frequency=12)#図2.2plot(decompose(SalaryofAll.ts),xlab="図2.2  年月")#図2.3plot(acf(SalaryofTokyo.ts),xlab="図2.3  月差")
+room2
+analyze.Salary<-function(Salary){show.data(Salary)mean2000<-apply(Salary$data[1:12,2:3],2,mean)mean2000SalaryIndex.ts<-ts(Salary$data[,2:3]/mean2000,start=c(2000,1),frequency=12)#図2.1readline("\nType  <Return>\t to start : ")plot(SalaryIndex.ts,xlab="図2.1")readline("\n Next 図2.2 ")SalaryofAll.ts<-ts(Salary$data[,2]/10000,start=c(2000,1),frequency=12)SalaryofTokyo.ts<-ts(Salary$data[,3]/10000,start=c(2000,1),frequency=12)#図2.2readline("\n Next 図2.3 ")plot(decompose(SalaryofAll.ts),xlab="図2.2  年月")#図2.3plot(acf(SalaryofTokyo.ts),xlab="図2.3  月差")}
+analyze.Salary(Salary)
+analyze.Salary<-function(Salary){show.data(Salary)mean2000<-apply(Salary$data[1:12,2:3],2,mean)mean2000SalaryIndex.ts<-ts(Salary$data[,2:3]/mean2000,start=c(2000,1),frequency=12)#図2.1readline("\nType  <Return>\t to start : ")plot(SalaryIndex.ts,xlab="図2.1")readline("\n Next 図2.2 ")SalaryofAll.ts<-ts(Salary$data[,2]/10000,start=c(2000,1),frequency=12)SalaryofTokyo.ts<-ts(Salary$data[,3]/10000,start=c(2000,1),frequency=12)#図2.2plot(decompose(SalaryofAll.ts),xlab="図2.2  年月")readline("\n Next 図2.3 ")#図2.3plot(acf(SalaryofTokyo.ts),xlab="図2.3  月差")}
+analyze.Salary(Salary)
+plot.room2<-function(room2){show.data(room2)Yachin<-room2$data[,"家賃"]*10Okisa<-room2$data[,"大きさ"]readline("\nType  <Return>\t to 図2.4 : ")hist(Yachin,xlim=c(60000,200000),xlab="図2.4 家賃")readline("\n Next 図2.5 ")qqplot(Yachin,xlab="図2.5 Q-Qプロット")readline("\n Next 図2.6 ")plot(Okisa,Yachin,xlab="図2.6 大きさ",ylab="家賃")#Yachin.reg1<-lm(Yachin~Okisa)readline("\n Next 回帰分析の結果 ")summary(Yachin.reg1)readline("\n Next 図2.8 ")plot(Yachin.reg$fitted,Yachi.reg1$residuals,xlab="図2.8 予測値",ylab="残差",main="家賃　予測値 vs 残差")}
+plot.room2(room2)
+plot.room2<-function(){show.data(room2)Yachin<-room2$data[,"家賃"]*10Okisa<-room2$data[,"大きさ"]readline("\nType  <Return>\t to 図2.4 : ")hist(Yachin,xlim=c(60000,200000),xlab="図2.4 家賃")readline("\n Next 図2.5 ")qqpnorm(Yachin,xlab="図2.5 Q-Qプロット")readline("\n Next 図2.6 ")plot(Okisa,Yachin,xlab="図2.6 大きさ",ylab="家賃")#Yachin.reg1<-lm(Yachin~Okisa)readline("\n Next 回帰分析の結果 ")summary(Yachin.reg1)readline("\n Next 図2.8 ")plot(Yachin.reg$fitted,Yachi.reg1$residuals,xlab="図2.8 予測値",ylab="残差",main="家賃　予測値 vs 残差")}
+plot.room2
+plot.room2<-function(room2){show.data(room2)Yachin<-room2$data[,"家賃"]*10Okisa<-room2$data[,"大きさ"]readline("\nType  <Return>\t to 図2.4 : ")hist(Yachin,xlim=c(60000,200000),xlab="図2.4 家賃")readline("\n Next 図2.5 ")qqpnorm(Yachin,xlab="図2.5 Q-Qプロット")readline("\n Next 図2.6 ")plot(Okisa,Yachin,xlab="図2.6 大きさ",ylab="家賃")#Yachin.reg1<-lm(Yachin~Okisa)readline("\n Next 回帰分析の結果 ")summary(Yachin.reg1)readline("\n Next 図2.8 ")plot(Yachin.reg$fitted,Yachi.reg1$residuals,xlab="図2.8 予測値",ylab="残差",main="家賃　予測値 vs 残差")}
+plot.room2(room2)
+plot.room2<-function(room2){show.data(room2)Yachin<-room2$data[,"家賃"]*10Okisa<-room2$data[,"大きさ"]readline("\nType  <Return>\t to 図2.4 : ")hist(Yachin,xlim=c(60000,200000),xlab="図2.4 家賃")readline("\n Next 図2.5 ")plot(qqpnorm(Yachin),xlab="図2.5 Q-Qプロット")readline("\n Next 図2.6 ")plot(Okisa,Yachin,xlab="図2.6 大きさ",ylab="家賃")#Yachin.reg1<-lm(Yachin~Okisa)readline("\n Next 回帰分析の結果 ")summary(Yachin.reg1)readline("\n Next 図2.8 ")plot(Yachin.reg$fitted,Yachi.reg1$residuals,xlab="図2.8 予測値",ylab="残差",main="家賃　予測値 vs 残差")}
+plot.room2(room2)
+plot.room2<-function(room2){show.data(room2)Yachin<-room2$data[,"家賃"]*10Okisa<-room2$data[,"大きさ"]readline("\nType  <Return>\t to 図2.4 : ")hist(Yachin,xlim=c(60000,200000),xlab="図2.4 家賃")readline("\n Next 図2.5 ")plot(qqnorm(Yachin),xlab="図2.5 Q-Qプロット")readline("\n Next 図2.6 ")plot(Okisa,Yachin,xlab="図2.6 大きさ",ylab="家賃")#Yachin.reg1<-lm(Yachin~Okisa)readline("\n Next 回帰分析の結果 ")summary(Yachin.reg1)readline("\n Next 図2.8 ")plot(Yachin.reg$fitted,Yachi.reg1$residuals,xlab="図2.8 予測値",ylab="残差",main="家賃　予測値 vs 残差")}
+plot.room2(room2)
+plot.room2<-function(room2){show.data(room2)Yachin<-room2$data[,"家賃"]*10Okisa<-room2$data[,"大きさ"]readline("\nType  <Return>\t to 図2.4 : ")hist(Yachin,xlim=c(60000,200000),xlab="図2.4 家賃")readline("\n Next 図2.5 ")plot(qqnorm(Yachin),xlab="図2.5 Q-Qプロット")readline("\n Next 図2.6 ")plot(Okisa,Yachin,xlab="図2.6 大きさ",ylab="家賃")#Yachin.reg1<-lm(Yachin~Okisa)readline("\n Next 回帰分析の結果 ")print(summary(Yachin.reg1))readline("\n Next 図2.8 ")plot(Yachin.reg$fitted,Yachin.reg1$residuals,xlab="図2.8 予測値",ylab="残差",main="家賃　予測値 vs 残差")}
+plot.room2(room2)
+ls()
+rm(a*)
+rm(anal)
+rm(analyze.Salary,ans,Body,chidf10)
+ls()
+rm(ls()[1:27])
+aa<-ls()
+aa
+aa[1]
+ls()
+rm(aa,chidf3,chidf5,chidf50,fdf110,fdf210,fdf250,fdf5100)
+ls()
+rm(fdf550,f,geomean,h2,JapanIndex.ma,JapanIndex.ts,JapanaSalary,JapanSalary,ma)
+ls()
+rm(g,JapanSalary.ma,JapanSalary.ts,legend,lev,m,mean2000,meanYachin,n,opar,oie.sales)
+rm(g,JapanSalary.ma,JapanSalary.ts,legend,lev,m,mean2000,meanYachin,n,opar,pie.sales)
+ls()
+rm(pin,plot.room2,PPPpersonJCK,room2.aov,room2.lm2,rs)
+ls()
+rm(Salary2,SalaryIndex,SalaryIndex.ts,SalaryofAll.ts,SalaryofTokyo.ts,scale)
+ls()
+rm(sdYachin,show.data,tdf1,tdf10,tdf3,tdf50,TokyoIndex,ts.Salary2)
+ls()
+rm(usr,ts.SalaryIndex,ts.Tokyo,ts.Tokyo.Index)
+ls()
+rm(ts.TokyoIndex)
+rm(var.list,var.list2,x,x1,x2,xadd,xc,xdelta,xintr,xpos,xscale,xx)
+ls()
+rm(y,y1,y2,Yachin.aov,Yachin.lm,Yachin.lm2,Yachin.lm3,Yachin.prefict,Yachin.reg)
+rm(y,y1,y2,Yachin.aov,Yachin.lm,Yachin.lm2,Yachin.lm3,Yachin.predict,Yachin.reg)
+ls()
+rom(Yachin.reg2,yadd.ydelta,Year,YearMonth,yhat.yscale,yy,z,z2,zid,zid2,zYachin)
+rm(Yachin.reg2,yadd.ydelta,Year,YearMonth,yhat.yscale,yy,z,z2,zid,zid2,zYachin)
+ls()
+rm(yadd,ydelta,Year,YearMonth,yhat,yscale,yy,z,z2,zid,zid2,zYachin)
+ls()
+planet<-new.env()planet$description<-c("太陽系の惑星などに関するデータ　データの大きさは9")planet$description[2]<-c("変数名　惑星名	軌道傾斜角（度）	 離心率 	軌道長半径（AU)	公転周期（年）")planet$data<-read.table(stdin(),header=T,row.names=1)水星	7.004	0.2056	0.3871	0.241金星 	3.39471	0.0068	0.72333	0.615地球 	0.00005	0.0167	1	1火星 	1.85061	0.0934	1.52366	1.881 木星 	1.3053	0.0484	5.20336	11.86土星 	2.48446	0.0542	9.53707	29.46 天王星 	0.774	0.0461	19.19138	84.01 海王星 	1.76917	0.0086	30.06896	164.79(冥王星）	17.089	0.25025	39.445	247.74
+ls()
+planet
+show.data(planet)
+planet$data
+planet<-new.env()planet$description<-c("太陽系の惑星などに関するデータ　データの大きさは9")planet$description[2]<-c("変数名　惑星名	軌道傾斜角（度）	 離心率 	軌道長半径（AU)	公転周期（年）")planet$data<-read.table(stdin(),header=T,row.names=1)惑星名	軌道傾斜角	 離心率 	軌道長半径	公転周期水星	7.004	0.2056	0.3871	0.241金星 	3.39471	0.0068	0.72333	0.615地球 	0.00005	0.0167	1	1火星 	1.85061	0.0934	1.52366	1.881 木星 	1.3053	0.0484	5.20336	11.86土星 	2.48446	0.0542	9.53707	29.46 天王星 	0.774	0.0461	19.19138	84.01 海王星 	1.76917	0.0086	30.06896	164.79(冥王星）	17.089	0.25025	39.445	247.74 show.data(planet)planet.lm1<-lm(公転周期~軌道長半径,data=planet$data)summary(planet.lm1)planet.lm2<-(公転周期~軌道長半径^2,data=planet$data)summary(planet.lm2)plot(planet.lm1$residuals,planet.lm2$residuals,main="残差の比較")
+planet<-new.env()planet$description<-c("太陽系の惑星などに関するデータ　データの大きさは9")planet$description[2]<-c("変数名　惑星名	軌道傾斜角（度）	 離心率 	軌道長半径（AU)	公転周期（年）")planet$data<-read.table(stdin(),header=T,row.names=1)惑星名	軌道傾斜角	 離心率 	軌道長半径	公転周期水星	7.004	0.2056	0.3871	0.241金星 	3.39471	0.0068	0.72333	0.615地球 	0.00005	0.0167	1	1火星 	1.85061	0.0934	1.52366	1.881 木星 	1.3053	0.0484	5.20336	11.86土星 	2.48446	0.0542	9.53707	29.46 天王星 	0.774	0.0461	19.19138	84.01 海王星 	1.76917	0.0086	30.06896	164.79(冥王星）	17.089	0.25025	39.445	247.74 show.data(planet)planet.lm1<-lm(公転周期~軌道長半径,data=planet$data)summary(planet.lm1)planet.lm2<-lm(公転周期~軌道長半径^2,data=planet$data)summary(planet.lm2)plot(planet.lm1$residuals,planet.lm2$residuals,main="残差の比較")
+planet$data[,"軌道長半径"]
+x<-planet$data[,"軌道長半径"]
+x
+x^2
+planet<-new.env()planet$description<-c("太陽系の惑星などに関するデータ　データの大きさは9")planet$description[2]<-c("変数名　惑星名	軌道傾斜角（度）	 離心率 	軌道長半径（AU)	公転周期（年）")planet$data<-read.table(stdin(),header=T,row.names=1)惑星名	軌道傾斜角	 離心率 	軌道長半径	公転周期水星	7.004	0.2056	0.3871	0.241金星 	3.39471	0.0068	0.72333	0.615地球 	0.00005	0.0167	1	1火星 	1.85061	0.0934	1.52366	1.881 木星 	1.3053	0.0484	5.20336	11.86土星 	2.48446	0.0542	9.53707	29.46 天王星 	0.774	0.0461	19.19138	84.01 海王星 	1.76917	0.0086	30.06896	164.79(冥王星）	17.089	0.25025	39.445	247.74 show.data(planet)planet.lm1<-lm(公転周期~軌道長半径,data=planet$data)summary(planet.lm1)planet.lm2<-lm(公転周期~軌道長半径*軌道長半径,data=planet$data)summary(planet.lm2)plot(planet.lm1$residuals,planet.lm2$residuals,main="残差の比較")
+planet<-new.env()planet$description<-c("太陽系の惑星などに関するデータ　データの大きさは9")planet$description[2]<-c("変数名　惑星名	軌道傾斜角（度）	 離心率 	軌道長半径（AU)	公転周期（年）")planet$data<-read.table(stdin(),header=T,row.names=1)惑星名	軌道傾斜角	 離心率 	軌道長半径	公転周期水星	7.004	0.2056	0.3871	0.241金星 	3.39471	0.0068	0.72333	0.615地球 	0.00005	0.0167	1	1火星 	1.85061	0.0934	1.52366	1.881 木星 	1.3053	0.0484	5.20336	11.86土星 	2.48446	0.0542	9.53707	29.46 天王星 	0.774	0.0461	19.19138	84.01 海王星 	1.76917	0.0086	30.06896	164.79(冥王星）	17.089	0.25025	39.445	247.74 show.data(planet)planet.lm1<-lm(公転周期~軌道長半径,data=planet$data)summary(planet.lm1)軌道長半径2<-planet$data[,"軌道長半径"]^2planet.lm2<-lm(公転周期~軌道長半径2,data=planet$data)summary(planet.lm2)plot(planet.lm1$residuals,planet.lm2$residuals,main="残差の比較")
+show.data(planet)planet.lm1<-lm(公転周期~軌道長半径,data=planet$data)summary(planet.lm1)軌道長半径2乗<-planet$data[,"軌道長半径"]^2planet.lm2<-lm(公転周期~軌道長半径2乗,data=planet$data)summary(planet.lm2)plot(planet.lm1$residuals,planet.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")
+plot(planet$data[,"公転周期"],planet.lm1$residuals)
+show.data(planet)#公転周期 <-planet$data[,"公転周期"])軌道長半径<-planet$data[,"軌道長半径"])軌道長半径2乗<-軌道長半径^2planet.lm1<-lm(公転周期~軌道長半径)summary(planet.lm1)planet.lm2<-lm(公転周期~軌道長半径2乗)summary(planet.lm2)op<-par()#グラフィックを2行2列の4画面に分割par(mfrow=c(2,2))plot(公転周期,planet.lm1$residuals,xlab-"公転周期",ylab="残差",main="説明変数は軌道長半径")plot(公転周期,planet.lm2$residuals,xlab-"公転周期",ylab="残差",main="説明変数は軌道長半径の2乗")plot(planet.lm1$residuals,planet.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")par()<-op
+show.data(planet)#公転周期 <-planet$data[,"公転周期"]軌道長半径<-planet$data[,"軌道長半径"])軌道長半径2乗<-軌道長半径^2planet.lm1<-lm(公転周期~軌道長半径)summary(planet.lm1)planet.lm2<-lm(公転周期~軌道長半径2乗)summary(planet.lm2)op<-par()#グラフィックを2行2列の4画面に分割par(mfrow=c(2,2))plot(公転周期,planet.lm1$residuals,xlab-"公転周期",ylab="残差",main="説明変数は軌道長半径")plot(公転周期,planet.lm2$residuals,xlab-"公転周期",ylab="残差",main="説明変数は軌道長半径の2乗")plot(planet.lm1$residuals,planet.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")par()<-op
+par(mfrow())
+par()
+show.data(planet)#公転周期 <-planet$data[,"公転周期"]軌道長半径<-planet$data[,"軌道長半径"])軌道長半径2乗<-軌道長半径^2planet.lm1<-lm(公転周期~軌道長半径)summary(planet.lm1)planet.lm2<-lm(公転周期~軌道長半径2乗)summary(planet.lm2)op<-par()#グラフィックを2行2列の4画面に分割par(mfrow=c(2,2))plot(公転周期,planet.lm1$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径")plot(公転周期,planet.lm2$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径の2乗")plot(planet.lm1$residuals,planet.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")par(mfrow=op$mfrow)
+show.data(planet)#公転周期 <-planet$data[,"公転周期"]軌道長半径<-planet$data[,"軌道長半径"])軌道長半径2乗<-軌道長半径^2planet.lm1<-lm(公転周期~軌道長半径)summary(planet.lm1)planet.lm2<-lm(公転周期~軌道長半径2乗)summary(planet.lm2)op<-par()#グラフィックを2行2列の4画面に分割par(mfrow=c(2,2))plot(公転周期,軌道長半径)plot(公転周期,planet.lm1$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径")plot(公転周期,planet.lm2$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径の2乗")plot(planet.lm1$residuals,planet.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")par(mfrow=op$mfrow)
+plot(公転周期,軌道長半径)
+ls()
+show.data(planet)#公転周期 <-planet$data[,"公転周期"]軌道長半径<-planet$data[,"軌道長半径"]軌道長半径2乗<-軌道長半径^2planet.lm1<-lm(公転周期~軌道長半径)summary(planet.lm1)planet.lm2<-lm(公転周期~軌道長半径2乗)summary(planet.lm2)op<-par()#グラフィックを2行2列の4画面に分割par(mfrow=c(2,2))plot(公転周期,軌道長半径)plot(公転周期,planet.lm1$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径")plot(公転周期,planet.lm2$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径の2乗")plot(planet.lm1$residuals,planet.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")par(mfrow=op$mfrow)
+show.data(planet)#公転周期 <-planet$data[,"公転周期"]軌道長半径<-planet$data[,"軌道長半径"]軌道長半径2乗<-軌道長半径^2planet.lm1<-lm(公転周期~軌道長半径)summary(planet.lm1)planet.lm2<-lm(公転周期~軌道長半径2乗)summary(planet.lm2)op<-par()#グラフィックを2行2列の4画面に分割par(mfrow=c(2,2))plot(軌道長半径,公転周期)plot(公転周期,planet.lm1$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径")plot(公転周期,planet.lm2$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径の2乗")plot(planet.lm1$residuals,planet.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")par(mfrow=op$mfrow)
+ls()
+room1<-read.table(file.choose(),header=T)
+room1<-read.csv(file.choose(),header=T)
+room1
+room1<-read.table(stdin().choose(),header=T)
+room1<-read.table(stdin(),choose(),header=T)
+room1<-read.table(stdin(),header=T)
+ls()
+room1
+room1<-read.table(stdin(),header=T,sep=",")
+room1
+ls()
+room1
+temp<-room1
+room1<-new.env()
+romm1$data<-temp
+room1$data<-temp
+room1$description<-c("賃貸マンションのデータです．　データの大きさは140です")
+room1$description[2]<-c("変数名　近さ   家賃（) 間取り 大きさ 方角 築年数")
+room1$description[2]<-c("変数名　近さ   家賃（円) 間取り 大きさ(m2) 方角 築年数(年)")
+show.data(room1)
+家賃1<-room1$data[,"家賃"]大きさ1<-room1$data[,"大きさ"]room1.reg1<-lm(家賃1~大きさ1)summary(room1.reg1)家賃2<-room2$data[,"家賃"]大きさ2<-room2$data[,"大きさ"]room2.reg1<-lm(家賃2~大きさ2)summary(room1.reg2)
+家賃1<-room1$data[,"家賃"]大きさ1<-room1$data[,"大きさ"]room1.reg1<-lm(家賃1~大きさ1)summary(room1.reg1)家賃2<-room2$data[,"家賃"]大きさ2<-room2$data[,"大きさ"]room2.reg1<-lm(家賃2~大きさ2)summary(room2.reg1)
+get.data<-function(fin,header.is=T){	temp<-read.table(fin,header=header.is)	head(temp)	temp2<-new.env()	temp2$data<-temp	text<-readline("\nデータについて\n")	temp2$description<-c("データについて　",text)	text<-readline("\n変数について\n")	temp2$description[2]<-c("変数について　",text)	temp2}
+weather<-get.data(file.choose())
+{	temp<-read.table(fin,header=header.is)	head(temp)	temp2<-new.env()	temp2$data<-temp	text<-readline("\nデータについて\n")	temp2$description<-c("データについて　",text)	text<-readline("\n変数について\n")	temp2$description[2]<-c("変数について　",text)	temp2}
+get.data<-function(fin,header.is=T,sep="\t"){	temp<-read.table(fin,header=header.is)	head(temp)	temp2<-new.env()	temp2$data<-temp	text<-readline("\nデータについて\n")	temp2$description<-c("データについて　",text)	text<-readline("\n変数について\n")	temp2$description[2]<-c("変数について　",text)	temp2}
+weather<-get.data(file.choose(),spe=",")
+get.data<-function(fin,header.is=T,sep.is="\t"){	temp<-read.table(fin,header=header.is,sep=sep.is)	head(temp)	temp2<-new.env()	temp2$data<-temp	text<-readline("\nデータについて\n")	temp2$description<-c("データについて　",text)	text<-readline("\n変数について\n")	temp2$description[2]<-c("変数について　",text)	temp2}
+weather<-get.data(file.choose(),sep.is=",")
+get.data<-function(fin,header.is=T,sep.is="\t"){	temp<-read.table(fin,header=header.is,sep=sep.is)	print(head(temp))	temp2<-new.env()	temp2$data<-temp	text<-readline("\nデータについて\n")	temp2$description<-c("データについて　",text)	text<-readline("\n変数について\n")	if(length(text)>0		{		temp2$description[2]<-c("変数について　",text)		}	else		temp2$description[2]<-"変数について"	temp2}
+get.data<-function(fin,header.is=T,sep.is="\t"){	temp<-read.table(fin,header=header.is,sep=sep.is)	print(head(temp))	temp2<-new.env()	temp2$data<-temp	text<-readline("\nデータについて\n")	temp2$description<-c("データについて　",text)	text<-readline("\n変数について\n")	if(length(text)>0)		{		temp2$description[2]<-c("変数について　",text)		}	else		temp2$description[2]<-"変数について"	temp2}
+weather<-get.data(file.choose(),sep.is=",")
+c("データについて　",text)
+paste("データについて　",text)
+text<-"sss"
+c("データについて　",text)
+paste("データについて　",text)
+get.data<-function(fin,header.is=T,sep.is="\t"){	temp<-read.table(fin,header=header.is,sep=sep.is)	print(head(temp))	temp2<-new.env()	temp2$data<-temp	text<-readline("\nデータについて\n")	temp2$description<-paste("データについて　",text)	text<-readline("\n変数について\n")	if(length(text)>0)		{		temp2$description[2]<-paste("変数について　",text)		}	else		temp2$description[2]<-"変数について"	temp2}
+weather<-get.data(file.choose(),sep.is=",")
+weather
+show.data(weather)
+show.data<-function(DATA,action="all"){	if(action =="all" || action=="description")		if(!is.null(DATA$description))			print(DATA$description)	if(action=="all" || action=="data"|| action=="head"|| action=="tail")		{			cat("データの大きさ",nrow(DATA$data),"\n")			cat("変数の個数",ncol(DATA$data),"\n")		}	if(action=="all" || action=="data" || action=="head")		if(!is.null(DATA$data))			{				print(head(DATA$data))			}	if(action=="all" || action=="data"|| action=="tail")		if(!is.null(DATA$data))			{				print(tail(DATA$data))			}}
+show.data(weather)
+head(room1)
+head(room1$data)
+show.data(room2)家賃2<-room2$data[,"家賃"]大きさ2<-room2$data[,"大きさ"]近さ2<-room2$data[,"近さ"]築年数2<-room2$data[,"築年数"]room2.reg1<-lm(家賃2~大きさ2)room2.reg2<-lm(家賃2~近さ2)room2.reg3<-lm(家賃2~築年数2)summary(room2.reg1)summary(room2.reg2)summary(room2.reg3)#決定係数からcat("説明変数が大きさの場合　R^2=",cor(家賃2,room2.reg1$fitted.values)^2,"\n")cat("説明変数が近さの場合　R^2=",cor(家賃2,room2.reg2$fitted.values)^2,"\n")cat("説明変数が築年数の場合　R^2=",cor(家賃2,room2.reg3$fitted.values)^2,"\n")
+test<-new.env()test$description<-"試験結果　データの大きさは10")test$description[2]<-c("変数名　１回目　２回目）")test$data<-read.table(stdin(),header=T,row.names=1)名前　１回目　２回目A 30 45B 30 60C 40 50D 40 65E 50 70F 50 50G 60 55H 60 60I 70 70J 70 75show.data(test)wa<-test$data[,1]+test$data[,2]sa<-test$data[,1]-test$data[,2]plot(wa,sa)test.reg1<-lm(２回目~１回目,data=test$data)
+test<-new.env()test$description<-"試験結果　データの大きさは10")test$description[2]<-c("変数名　１回目　２回目）")test$data<-read.table(stdin(),header=T,row.names=1)１回目　２回目A 30 45B 30 60C 40 50D 40 65E 50 70F 50 50G 60 55H 60 60I 70 70J 70 75show.data(test)wa<-test$data[,1]+test$data[,2]sa<-test$data[,1]-test$data[,2]plot(wa,sa)test.reg1<-lm(２回目~１回目,data=test$data)
+test<-new.env()test$description<-"試験結果　データの大きさは10"test$description[2]<-"変数名　１回目　２回目）"test$data<-read.table(stdin(),header=T,row.names=1)１回目　２回目A 30 45B 30 60C 40 50D 40 65E 50 70F 50 50G 60 55H 60 60I 70 70J 70 75show.data(test)wa<-test$data[,1]+test$data[,2]sa<-test$data[,1]-test$data[,2]plot(wa,sa)test.reg1<-lm(２回目~１回目,data=test$data)
+test
+test$data
+rm(test)
+test<-new.env()test$description<-"試験結果　データの大きさは10"test$description[2]<-"変数名　１回目　２回目"test$data<-read.table(stdin(),header=T,row.names=1)１回目　２回目A 30 45B 30 60C 40 50D 40 65E 50 70F 50 50G 60 55H 60 60I 70 70J 70 75show.data(test)wa<-test$data[,1]+test$data[,2]sa<-test$data[,1]-test$data[,2]plot(wa,sa)test.reg1<-lm(２回目~１回目,data=test$data)
+test<-new.env()test$description<-"試験結果　データの大きさは10"test$description[2]<-"変数名　１回目　２回目"test$data<-read.table(stdin(),header=T,row.names=1)名前 １回目　２回目A 30 45B 30 60C 40 50D 40 65E 50 70F 50 50G 60 55H 60 60I 70 70J 70 75show.data(test)wa<-test$data[,1]+test$data[,2]sa<-test$data[,1]-test$data[,2]plot(wa,sa)test.reg1<-lm(２回目~１回目,data=test$data)
+test<-new.env()test$description<-"試験結果　データの大きさは10"test$description[2]<-"変数名　１回目　２回目"test$data<-read.table(stdin(),header=T,row.names=1,sep=" ")名前 １回目　２回目A 30 45B 30 60C 40 50D 40 65E 50 70F 50 50G 60 55H 60 60I 70 70J 70 75show.data(test)wa<-test$data[,1]+test$data[,2]sa<-test$data[,1]-test$data[,2]plot(wa,sa,xlab="試験結果の和",ylab="試験結果の差")test.reg1<-lm(２回目~１回目,data=test$data)
+test<-new.env()test$description<-"試験結果　データの大きさは10"test$description[2]<-"変数名　１回目 ２回目"test$data<-read.table(stdin(),header=T,row.names=1,sep=" ")名前 １回目　２回目A 30 45B 30 60C 40 50D 40 65E 50 70F 50 50G 60 55H 60 60I 70 70J 70 75show.data(test)wa<-test$data[,1]+test$data[,2]sa<-test$data[,1]-test$data[,2]plot(wa,sa,xlab="試験結果の和",ylab="試験結果の差")test.reg1<-lm(２回目~１回目,data=test$data)
+test$description<-"試験結果　データの大きさは10"test$description[2]<-"変数名　１回目 \t ２回目"test$data<-read.table(stdin(),header=T,row.names=1,sep=" ")名前 １回目　２回目A 30 45B 30 60C 40 50D 40 65E 50 70F 50 50G 60 55H 60 60I 70 70J 70 75show.data(test)wa<-test$data[,1]+test$data[,2]sa<-test$data[,1]-test$data[,2]plot(wa,sa,xlab="試験結果の和",ylab="試験結果の差")test.reg1<-lm(２回目~１回目,data=test$data)
+test<-new.env()test$description<-"試験結果　データの大きさは10"test$description[2]<-"変数名 １回目 ２回目"test$data<-read.table(stdin(),header=T,row.names=1,sep=" ")名前 １回目　２回目A 30 45B 30 60C 40 50D 40 65E 50 70F 50 50G 60 55H 60 60I 70 70J 70 75show.data(test)wa<-test$data[,1]+test$data[,2]sa<-test$data[,1]-test$data[,2]plot(wa,sa,xlab="試験結果の和",ylab="試験結果の差")test.reg1<-lm(２回目~１回目,data=test$data)
+test$data
+test<-new.env()test$description<-"試験結果　データの大きさは10"test$description[2]<-"変数名 １回目 ２回目"test$data<-read.table(stdin(),header=T,row.names=1,sep=" ")"名前" "１回目"　"２回目"A 30 45B 30 60C 40 50D 40 65E 50 70F 50 50G 60 55H 60 60I 70 70J 70 75show.data(test)wa<-test$data[,1]+test$data[,2]sa<-test$data[,1]-test$data[,2]plot(wa,sa,xlab="試験結果の和",ylab="試験結果の差")test.reg1<-lm(２回目~１回目,data=test$data)
+test<-new.env()test$description<-"試験結果　データの大きさは10"test$description[2]<-"変数名 １回目 ２回目"test$data<-read.table(stdin(),header=T,row.names=1,sep=" ")"名前" "１回目" "２回目"A 30 45B 30 60C 40 50D 40 65E 50 70F 50 50G 60 55H 60 60I 70 70J 70 75show.data(test)wa<-test$data[,1]+test$data[,2]sa<-test$data[,1]-test$data[,2]plot(wa,sa,xlab="試験結果の和",ylab="試験結果の差")test.reg1<-lm(２回目~１回目,data=test$data)
+summary(test.reg1)
+baseball<-new.env()baseball$description<-"プロ野球(2009年）　データの大きさは12"baseball$description[2]<-"変数名　リーグ　平均年棒（万円）　勝率"baseball$data<-read.table(stdin(),header=T,row.names=1,sep=" ")球団　		リーグ		平均年俸		勝率		巨人 		C 		4676	 	0.659	中日 		C	 	4311	 	0.566	ヤクルト	C	 	3324 		0.497	阪神 		C	 	5794 		0.479	広島 		C 		2298 		0.464	横浜 		C	 	3275 		0.354	日本ハム	P 		3305 		0.577	楽天 		P 		2684	 	0.538	ソフトバンク P 		5273	 	0.532	西武 		P	 	3576	 	0.5ロッテ	 	P 		4325 		0.446	オリックス	 P	 	2728 		0.394	show.data(baseball)summary(baseball)sd(baseball$data[,c("平均年棒","勝率")])リーグ<-baseball$data[,"リーグ"]平均年棒<-baseball$data[,"平均年棒"]勝率<-baseball$data[,"勝率"]par(mfcol=c(2,2))boxplot(平均年棒~リーグ)boxplot(勝率~リーグ)plot(平均年棒,勝率)plot(勝率,平均年棒)par(mfcol=c(1,1))summary(baseball)sd(baseball$da
+ta[,c("平均年棒","勝率")])cor(baseball$data[,c("平均年棒","勝率")])
+baseball<-new.env()baseball$description<-"プロ野球(2009年）　データの大きさは12"baseball$description[2]<-"変数名　リーグ　平均年棒（万円）　勝率"baseball$data<-read.table(stdin(),header=T,row.names=1)"球団"　	"リーグ"		"平均年俸"		"勝率"		巨人 		C 		4676	 	0.659	中日 		C	 	4311	 	0.566	ヤクルト	C	 	3324 		0.497	阪神 		C	 	5794 		0.479	広島 		C 		2298 		0.464	横浜 		C	 	3275 		0.354	日本ハム	P 		3305 		0.577	楽天 		P 		2684	 	0.538	ソフトバンク P 		5273	 	0.532	西武 		P	 	3576	 	0.5ロッテ	 	P 		4325 		0.446	オリックス	 P	 	2728 		0.394
+baseball<-new.env()baseball$description<-"プロ野球(2009年）　データの大きさは12"baseball$description[2]<-"変数名　リーグ　平均年棒（万円）　勝率"baseball$data<-read.table(stdin(),header=T,row.names=1,sep=" ")"球団"　	"リーグ"		"平均年俸"		"勝率"		巨人 		C 		4676	 	0.659	中日 		C	 	4311	 	0.566	ヤクルト	C	 	3324 		0.497	阪神 		C	 	5794 		0.479	広島 		C 		2298 		0.464	横浜 		C	 	3275 		0.354	日本ハム	P 		3305 		0.577	楽天 		P 		2684	 	0.538	ソフトバンク P 		5273	 	0.532	西武 		P	 	3576	 	0.5ロッテ	 	P 		4325 		0.446	オリックス	 P	 	2728 		0.394
+rm(baseball)
+baseball<-new.env()baseball$description<-"プロ野球(2009年）　データの大きさは12"baseball$description[2]<-"変数名　リーグ　平均年棒（万円）　勝率"baseball$data<-read.table(stdin(),header=T,row.names=1,sep=" ")"球団"　	"リーグ"		"平均年俸"		"勝率"		巨人 		C 		4676	 	0.659	中日 		C	 	4311	 	0.566	ヤクルト	C	 	3324 		0.497	阪神 		C	 	5794 		0.479	広島 		C 		2298 		0.464	横浜 		C	 	3275 		0.354	日本ハム	P 		3305 		0.577	楽天 		P 		2684	 	0.538	ソフトバンク P 		5273	 	0.532	西武 		P	 	3576	 	0.5ロッテ	 	P 		4325 		0.446	オリックス	 P	 	2728 		0.394
+baseball<-new.env()baseball$description<-"プロ野球(2009年）　データの大きさは12"baseball$description[2]<-"変数名　リーグ　平均年棒（万円）　勝率"baseball$data<-read.table(stdin(),header=T,row.names=1,sep=" ")"球団"　	"リーグ"		"平均年俸"		"勝率"		巨人 		C 		4676	 	0.659中日 		C	 	4311	 	0.566ヤクルト	C	 	3324 		0.497阪神 		C	 	5794 		0.479広島 		C 		2298 		0.464横浜 		C	 	3275 		0.354日本ハム	P 		3305 		0.577楽天 		P 		2684	 	0.538ソフトバンク P 		5273	 	0.532西武 		P	 	3576	 	0.5ロッテ	 	P 		4325 		0.446オリックス	 P	 	2728 		0.394
+baseball<-new.env()baseball$description<-"プロ野球(2009年）　データの大きさは12"baseball$description[2]<-"変数名　リーグ　平均年棒（万円）　勝率"baseball$data<-read.table(stdin(),header=T,row.names=1,sep=" ")球団　	リーグ		平均年俸		勝率		巨人 		C 		4676	 	0.659中日 		C	 	4311	 	0.566ヤクルト	C	 	3324 		0.497阪神 		C	 	5794 		0.479広島 		C 		2298 		0.464横浜 		C	 	3275 		0.354日本ハム	P 		3305 		0.577楽天 		P 		2684	 	0.538ソフトバンク P 		5273	 	0.532西武 		P	 	3576	 	0.5ロッテ	 	P 		4325 		0.446オリックス	 P	 	2728 		0.394
+#練習問題 2.1dir()source("inputdata.r")planet<-get.data("planet.data")show.data(planet)#公転周期 <-planet$data[,"公転周期"]軌道長半径<-planet$data[,"軌道長半径"]軌道長半径2乗<-軌道長半径^2planet.lm1<-lm(公転周期~軌道長半径)summary(planet.lm1)planet.lm2<-lm(公転周期~軌道長半径2乗)summary(planet.lm2)op<-par()#グラフィックを2行2列の4画面に分割par(mfrow=c(2,2))plot(軌道長半径,公転周期)plot(公転周期,planet.lm1$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径")plot(公転周期,planet.lm2$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径の2乗")plot(planet.lm1$residuals,planet.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")par(mfrow=op$mfrow)#冥王星を除くとid<-rownames(planet$data)=="冥王星"planet2.data<-planet$data[!id,]公転周期2 <-planet2.data[,"公転周期"]
+軌道長半径2<-planet2.data[,"軌道長半径"]軌道長半径2乗2<-軌道長半径2^2planet2.lm1<-lm(公転周期2~軌道長半径2)summary(planet2.lm1)planet2.lm2<-lm(公転周期2~軌道長半径2乗2)summary(planet2.lm2)op<-par()#グラフィックを2行2列の4画面に分割par(mfrow=c(2,2))plot(軌道長半径2,公転周期2)plot(公転周期2,planet2.lm1$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径")plot(公転周期2,planet2.lm2$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径の2乗")plot(planet2.lm1$residuals,planet2.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")par(mfrow=op$mfrow)#練習問題2.2#room1dir()source("inputdata.r")#賃貸マンションデータ1room1<-get.data("Mansion1.csv",sep.is=",")show.data(room1)家賃1<-room1$data[,"家賃"]大きさ1<-room1$data[,"大きさ"]room1.reg1<-lm(家賃1~大きさ1)summary(room1
+.reg1)#賃貸マンションデータ2room2<-get.data("Mansion2.data")家賃2<-room2$data[,"家賃"]大きさ2<-room2$data[,"大きさ"]room2.reg1<-lm(家賃2~大きさ2)summary(room2.reg1)#練習問題2.3dir()source("inputdata.r")room2<-get.data("Mansion2.data")show.data(room2)家賃2<-room2$data[,"家賃"]大きさ2<-room2$data[,"大きさ"]近さ2<-room2$data[,"近さ"]築年数2<-room2$data[,"築年数"]room2.reg1<-lm(家賃2~大きさ2)room2.reg2<-lm(家賃2~近さ2)room2.reg3<-lm(家賃2~築年数2)summary(room2.reg1)summary(room2.reg2)summary(room2.reg3)#決定係数からcat("説明変数が大きさの場合　R^2=",cor(家賃2,room2.reg1$fitted.values)^2,"\n")cat("説明変数が近さの場合　R^2=",cor(家賃2,room2.reg2$fitted.values)^2,"\n")cat("説明変数が築年数の場合　R^2=",cor(家賃2,room2.reg3$fitted.values)^2,"\n")#練習問題2.4dir()source("inputdata.r")test<-get.data("test.data",row.names.col=1)show.data(test)wa<-test$data[,1]+test$dat
+a[,2]sa<-test$data[,1]-test$data[,2]plot(wa,sa,xlab="試験結果の和",ylab="試験結果の差")test.reg1<-lm(２回目~１回目,data=test$data)summary(test.reg1)#練習問題2.5source("inputdata.r")baseball<-get.data("baseball.data") #球団名も変数として扱うshow.data(baseball)League<-baseball$data[,2]Salary<-baseball$data[,3]Winning<-baseball$data[,4]par(mfcol=c(2,2))boxplot(Salary~League)boxplot(Winning~League)plot(Salary,Winning)plot(Winning,Salary)par(mfcol=c(1,1))summary(baseball$data)sapply(baseball$data[,3:4],sd)cor(baseball$data[,3:4])#仮説　利益への選手の貢献＝＞年棒が高い＝＞結果は勝率baseball.reg1<-lm(Winning~Salary)summary(baseball.reg1)plot(Winning,baseball.reg1$residuals)
+dir()Salary<-read.table("Salart.data",header=T,sep="\t")head(Salary)mean2000<-apply(Salary[1:12,2:3],2,mean)cat("平均",mean2000,"\n")SalaryIndex.ts<-ts(Salary[,2:3]/mean2000,start=c(2000,1),frequency=12)#図2.1plot(SalaryIndex.ts,xlab="図2.1")#図2.2SalaryofAll.ts<-ts(Salary[,2]/10000,start=c(2000,1),frequency=12)SalaryofTokyo.ts<-ts(Salary[,3]/10000,start=c(2000,1),frequency=12)#図2.2plot(decompose(SalaryofAll.ts),xlab="図2.2  年月")#図2.3plot(acf(SalaryofTokyo.ts),xlab="図2.3  月差")#2章回帰　家賃room2<-read.table("Mansion2.data",header=T,sep="\t")header(room2)Yachin<-room2[,"家賃"]*10  #10円を1円へOkisa<-room2[,"大きさ"]#readline("\nType  <Return>\t to 図2.4 : ")#図2.4hist(Yachin,xlim=c(60000,200000),xlab="図2.4 家賃")#readline("\n Next 図2.5 ")#図2.5plot(qqnorm(Yachin),xlab="図2.5 Q-Qプロット")#readline("\n Next 図2.6 ")#図2.6plot(Okisa,Yachin,xlab="図2.6 大きさ",ylab="家賃")#直線の当てはめYachin.reg1<-lm(Yachin~Okisa)#回帰の結果summary(Yachin.reg1)#図2.8plot(Yachin.reg1$fitted.value,Yachin.reg1$residuals,xlab="図2.8 予測値",ylab="残差",main="家賃　予測値 vs 残差")
+dir()Salary<-read.table("Salary.data",header=T,sep="\t")head(Salary)mean2000<-apply(Salary[1:12,2:3],2,mean)cat("平均",mean2000,"\n")SalaryIndex.ts<-ts(Salary[,2:3]/mean2000,start=c(2000,1),frequency=12)#図2.1plot(SalaryIndex.ts,xlab="図2.1")#図2.2SalaryofAll.ts<-ts(Salary[,2]/10000,start=c(2000,1),frequency=12)SalaryofTokyo.ts<-ts(Salary[,3]/10000,start=c(2000,1),frequency=12)#図2.2plot(decompose(SalaryofAll.ts),xlab="図2.2  年月")#図2.3plot(acf(SalaryofTokyo.ts),xlab="図2.3  月差")#2章回帰　家賃room2<-read.table("Mansion2.data",header=T,sep="\t")header(room2)Yachin<-room2[,"家賃"]*10  #10円を1円へOkisa<-room2[,"大きさ"]#readline("\nType  <Return>\t to 図2.4 : ")#図2.4hist(Yachin,xlim=c(60000,200000),xlab="図2.4 家賃")#readline("\n Next 図2.5 ")#図2.5plot(qqnorm(Yachin),xlab="図2.5 Q-Qプロット")#readline("\n Next 図2.6 ")#図2.6plot(Okisa,Yachin,xlab="図2.6 大きさ",ylab="家賃")#直線の当てはめYachin.reg1<-lm(Yachin~Okisa)#回帰の結果summary(Yachin.reg1)#図2.8plot(Yachin.reg1$fitted.value,Yachin.reg1$residuals,xlab="図2.8 予測値",ylab="残差",main="家賃　予測値 vs 残差")
+Salary
+Salary[1:12,2:3]
+Salary[1:12,]
+Salary[,2:3
+]
+Salary[,2]
+dir()Salary<-read.table("Salary.data",header=T,sep="\t")head(Salary)mean2000<-apply(Salary[1:12,2:3],2,mean)cat("平均",mean2000,"\n")SalaryIndex.ts<-ts(Salary[,2:3]/mean2000,start=c(2000,1),frequency=12)#図2.1plot(SalaryIndex.ts,xlab="図2.1")#図2.2SalaryofAll.ts<-ts(Salary[,2]/10000,start=c(2000,1),frequency=12)SalaryofTokyo.ts<-ts(Salary[,3]/10000,start=c(2000,1),frequency=12)#図2.2plot(decompose(SalaryofAll.ts),xlab="図2.2  年月")#図2.3plot(acf(SalaryofTokyo.ts),xlab="図2.3  月差")
+#練習問題 2.1planet<-read.table("planet.data",header=T)head(planet)#公転周期 <-planet[,"公転周期"]軌道長半径<-planet[,"軌道長半径"]軌道長半径2乗<-軌道長半径^2planet.lm1<-lm(公転周期~軌道長半径)summary(planet.lm1)planet.lm2<-lm(公転周期~軌道長半径2乗)summary(planet.lm2)op<-par()#グラフィックを2行2列の4画面に分割par(mfrow=c(2,2))plot(軌道長半径,公転周期)plot(公転周期,planet.lm1$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径")plot(公転周期,planet.lm2$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径の2乗")plot(planet.lm1$residuals,planet.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")par(mfrow=op$mfrow)#冥王星を除くとid<-rownames(planet$data)=="冥王星"planet2.data<-planet[!id,]公転周期2 <-planet2.data[,"公転周期"]軌道長半径2<-planet2.data[,"軌道長半径"]軌道長半径2乗2<-軌道長半径2^2planet2.lm1<-lm(公転周期2~軌道長半径2)summary(planet2.lm1)planet2.lm2<-lm(公転周期2~軌道長半径2乗2)summary(planet2.lm2)op<-par()#グラフィックを2行2列の4画面に分割par(mfrow=c(2,2))plot(軌道長半径2,公転周期2)plot(公転周期2,planet2.lm1$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径")plot(公転周期2,planet2.lm2$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径の2乗")plot(planet2.lm1$residuals,planet2.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")par(mfrow=op$mfrow)#練習問題2.2#room1#賃貸マンションデータ1room1<-read.table("Mansion1.csv",header=T,sep=",")head(room1)家賃1<-room1[,"家賃"]大きさ1<-room1[,"大きさ"]room1.reg1<-lm(家賃1~大きさ1)summary(room1.reg1)#賃貸マンションデータ2room2<-read.table("Mansion2.data",header=T,sep="\t")家賃2<-room2[,"家賃"]大きさ2<-room2[,"大きさ"]room2.reg1<-lm(家賃2~大きさ2)summary(room2.reg1)#練習問題2.3room2<-read.table("Mansion2.data",header=T,sep"\t")head(room2)家賃2<-room2[,"家賃"]大きさ2<-room2[,"大きさ"]近さ2<-room2[,"近さ"]築年数2<-room2[,"築年数"]room2.reg1<-lm(家賃2~大きさ2)room2.reg2<-lm(家賃2~近さ2)room2.reg3<-lm(家賃2~築年数2)summary(room2.reg1)summary(room2.reg2)summary(room2.reg3)#決定係数からcat("説明変数が大きさの場合　R^2=",cor(家賃2,room2.reg1$fitted.values)^2,"\n")cat("説明変数が近さの場合　R^2=",cor(家賃2,room2.reg2$fitted.values)^2,"\n")cat("説明変数が築年数の場合　R^2=",cor(家賃2,room2.reg3$fitted.values)^2,"\n")#練習問題2.4test<-read.table("test.data",header=T,sep="\t",row.names.col=1)head(test)wa<-test[,1]+test[,2]sa<-test[,2]-test[,1]plot(wa,sa,xlab="試験結果の和",ylab="試験結果の差")２回目<-test[,1]１回目<-test[,2]２回目<-(２回目-mean(２回目))/sd(２回目)１回目<-(１回目-mean(１回目))/sd(１回目)test.reg1<-lm(２回目~１回目)summary(test.reg1)#練習問題2.5baseball<-read.table("baseball.data",header=T,sep="\t") #球団名も変数として扱うhead(baseball)League<-baseball[,2]Salary<-baseball[,3]Winning<-baseball[,4]par(mfcol=c(2,2))boxplot(Salary~League)boxplot(Winning~League)plot(Salary,Winning)plot(Winning,Salary)par(mfcol=c(1,1))summary(baseball)sapply(baseball[,3:4],sd)cor(baseball[,3:4])#仮説　利益への選手の貢献＝＞年棒が高い＝＞結果は勝率baseball.reg1<-lm(Winning~Salary)summary(baseball.reg1)plot(Winning,baseball.reg1$residuals)
+#練習問題 2.1planet<-read.table("planet.data",header=T)head(planet)#公転周期 <-planet[,"公転周期"]軌道長半径<-planet[,"軌道長半径"]軌道長半径2乗<-軌道長半径^2planet.lm1<-lm(公転周期~軌道長半径)summary(planet.lm1)planet.lm2<-lm(公転周期~軌道長半径2乗)summary(planet.lm2)op<-par()#グラフィックを2行2列の4画面に分割par(mfrow=c(2,2))plot(軌道長半径,公転周期)plot(公転周期,planet.lm1$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径")plot(公転周期,planet.lm2$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径の2乗")plot(planet.lm1$residuals,planet.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")par(mfrow=op$mfrow)#冥王星を除くとid<-rownames(planet$data)=="冥王星"planet2.data<-planet[!id,]公転周期2 <-planet2.data[,"公転周期"]軌道長半径2<-planet2.data[,"軌道長半径"]軌道長半径2乗2<-軌道長半径2^2planet2.lm1<-lm(公転周期2~軌道長半径2)summary(planet2.lm1)planet2.lm2<-lm(公転周期2~軌道長半径2乗2)summary(planet2.lm2)op<-par()#グラフィックを2行2列の4画面に分割par(mfrow=c(2,2))plot(軌道長半径2,公転周期2)plot(公転周期2,planet2.lm1$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径")plot(公転周期2,planet2.lm2$residuals,xlab="公転周期",ylab="残差",main="説明変数は軌道長半径の2乗")plot(planet2.lm1$residuals,planet2.lm2$residuals,xlab="説明変数は軌道長半径",ylab="説明変数は軌道長半径の2乗",main="残差の比較")par(mfrow=op$mfrow)#練習問題2.2#room1#賃貸マンションデータ1room1<-read.table("Mansion1.csv",header=T,sep=",")head(room1)家賃1<-room1[,"家賃"]大きさ1<-room1[,"大きさ"]room1.reg1<-lm(家賃1~大きさ1)summary(room1.reg1)#賃貸マンションデータ2room2<-read.table("Mansion2.data",header=T,sep="\t")家賃2<-room2[,"家賃"]大きさ2<-room2[,"大きさ"]room2.reg1<-lm(家賃2~大きさ2)summary(room2.reg1)#練習問題2.3room2<-read.table("Mansion2.data",header=T,sep"\t")head(room2)家賃2<-room2[,"家賃"]大きさ2<-room2[,"大きさ"]近さ2<-room2[,"近さ"]築年数2<-room2[,"築年数"]room2.reg1<-lm(家賃2~大きさ2)room2.reg2<-lm(家賃2~近さ2)room2.reg3<-lm(家賃2~築年数2)summary(room2.reg1)summary(room2.reg2)summary(room2.reg3)#決定係数からcat("説明変数が大きさの場合　R^2=",cor(家賃2,room2.reg1$fitted.values)^2,"\n")cat("説明変数が近さの場合　R^2=",cor(家賃2,room2.reg2$fitted.values)^2,"\n")cat("説明変数が築年数の場合　R^2=",cor(家賃2,room2.reg3$fitted.values)^2,"\n")#練習問題2.4test<-read.table("test.data",header=T,sep="\t",row.names.col=1)head(test)wa<-test[,1]+test[,2]sa<-test[,2]-test[,1]plot(wa,sa,xlab="試験結果の和",ylab="試験結果の差")２回目<-test[,1]１回目<-test[,2]２回目<-(２回目-mean(２回目))/sd(２回目)１回目<-(１回目-mean(１回目))/sd(１回目)test.reg1<-lm(２回目~１回目)summary(test.reg1)#練習問題2.5baseball<-read.table("baseball.data",header=T,sep="\t") #球団名も変数として扱うhead(baseball)League<-baseball[,2]Salary<-baseball[,3]Winning<-baseball[,4]par(mfcol=c(2,2))boxplot(Salary~League)boxplot(Winning~League)plot(Salary,Winning)plot(Winning,Salary)par(mfcol=c(1,1))summary(baseball)sapply(baseball[,3:4],sd)cor(baseball[,3:4])#仮説　利益への選手の貢献＝＞年棒が高い＝＞結果は勝率baseball.reg1<-lm(Winning~Salary)summary(baseball.reg1)plot(Winning,baseball.reg1$residuals)
+test<-read.table("test.data",header=T,sep="\t",row.names=1)head(test)wa<-test[,1]+test[,2]sa<-test[,2]-test[,1]plot(wa,sa,xlab="試験結果の和",ylab="試験結果の差")２回目<-test[,1]１回目<-test[,2]２回目<-(２回目-mean(２回目))/sd(２回目)１回目<-(１回目-mean(１回目))/sd(１回目)test.reg1<-lm(２回目~１回目)summary(test.reg1)
+#６章room2<-read.table("Mansion2.data",header=T,sep="\t")head(room2)Yachin.reg2<-lm(room2[,"家賃"]~room2[,"大きさ"]+room2[,"徒歩"])summary(Yachin.reg2)plot(room2[,"家賃"],Yachin.reg2$residuals,xlab="家賃",ylab="残差")#6章練習問題6.1room2<-read.table("Mansion2.data",header=T,sep="\t")head(room2)#相関係数Rxx<-cor(room2[,c("徒歩","大きさ","築年数")])print(Rxx)abs(det(Rxx))Yachin.reg3<-lm(room2[,"家賃"]~room2[,"徒歩"]+room2[,"大きさ"]+room2[,"築年数"])summary(Yachin.reg3)#図6.1plot(room2[,"家賃"],Yachin.reg3$residuals,xlab="家賃",ylab="残差")
+#６章room2<-read.table("Mansion2.data",header=T,sep="\t")head(room2)Yachin.reg2<-lm(room2[,"家賃"]~room2[,"大きさ"]+room2[,"徒歩"])summary(Yachin.reg2)plot(room2[,"家賃"],Yachin.reg2$residuals,xlab="家賃",ylab="残差")#6章練習問題6.1room2<-read.table("Mansion2.data",header=T,sep="\t")head(room2)#相関係数Rxx<-cor(room2[,c("徒歩","大きさ","築年数")])print(Rxx)abs(det(Rxx))Yachin.reg3<-lm(room2[,"家賃"]~room2[,"徒歩"]+room2[,"大きさ"]+room2[,"築年数"])summary(Yachin.reg3)#図6.1plot(room2[,"家賃"],Yachin.reg3$residuals,xlab="家賃",ylab="残差")

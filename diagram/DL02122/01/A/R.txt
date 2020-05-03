@@ -1,0 +1,56 @@
+図1.1
+barplot(table(room$間取り), xlab="間取り", ylab="Frequency")
+
+図1.2
+data <- c(23,33,37,14,21,6,1,5)
+names(data) <- c("東","南東","南","南西","西","北西","北","北東")
+pie(data, labels=names(data), main="方角", clockwise=TRUE)
+
+図1.3
+hist(room$家賃, breaks = seq(60000,160000,10000),col="darkgray",
++   xlab="家賃",main="") 
+
+図1.7
+stem(room$家賃, scale = 1, width = 40, atom = 1e-08)
+
+図1.8
+Fn <- ecdf(room$家賃)
+plot(Fn, do.point=F, verticals=T,xlab="", ylab="",main=paste(""),)
+
+図1.12
+boxplot(家賃~近さ, ylab="家賃", xlab="近さ",range=0, data=room)
+
+図1.14
+LabelsX <-  c("X15歳以下","X16.24歳","X25.29歳","X30.39歳",
++  "X40.49歳","X50.59歳","X60.64歳","X65.74歳","X75歳以上")
+Labels <-  c("15歳以下","16.24歳","25.29歳","30.39歳","40.49歳",
++  "50.59歳","60.64歳","65.74歳","75歳以上")
+matplot(death$平成暦年, death[, LabelsX], type="b", lty=1:9,
++  pch = 1:9, col=1:9, xlab="平成暦年", ylab="")
+legend(20.3,1500,legend=Labels, lty=1:9, pch = 1:9, col=1:9,
++ cex = 0.7)
+
+図1.15
+plot(room[,4],room[,2] ,pch =c(1, 2)[unclass(room$近さ)],
++  xlab="大きさ", ylab="家賃")
+Labels <- c("A：近い","B：遠い")
+legend(50,100000,legend= Labels, pch=1:2)
+
+
+＝＝＝＝＝＝＝＝＝＝＝
+表1.3
+ x=c(room$家賃)
+ y=c(room$大きさ)
+ z=c(room$築年数)
+ mean(x);var(x);sd(x);quantile(x);IQR(x) 
+ mean(y);var(y);sd(y);quantile(y);IQR(y) 
+ mean(z);var(z);sd(z);quantile(z);IQR(z) 
+
+
+ティータイムの相関係数
+ x=c(room$家賃)
+ y=c(room$大きさ)
+ z=c(room$築年数)
+ cor(x,y);cor(x,z);cor(y,z)
+
+
